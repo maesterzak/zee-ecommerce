@@ -1,4 +1,4 @@
-import { faMinus, faPlus,faCartPlus, faCartShopping, faCartArrowDown, faRotateBack, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus,faCartPlus, faCartShopping, faCartArrowDown, faRotateBack, faHeart, faEye, faShoppingCart, faShoppingBasket, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Card, Grid, Text, Col} from '@nextui-org/react'
 import styles from './styles.module.css'
@@ -55,10 +55,13 @@ function ShopCard(params) {
                         </div>
                         <div className='col-6 col-md-9 h-100'>
                             <div className='row h-100'>
+                                <div className='col-9'>
+
+                                </div>
                             
                             <div className='col-2 d-flex justify-content-center align-items-center h-100'>
                                
-                            <FontAwesomeIcon color='white'   icon={faCartShopping} size={'1x'}/>
+                            <FontAwesomeIcon color='white'   icon={faShoppingBag} size={'1x'}/>
                             
 
                             </div>

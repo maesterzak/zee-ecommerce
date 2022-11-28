@@ -210,7 +210,10 @@ export default function Home() {
                 
 
                 </div>
-                <div className="col-1">
+                <div className="col-1 position-relative">
+                <div className='cartAmount'>
+                1
+              </div>
                 
                 <Text><FontAwesomeIcon size={'sm'} icon={faShoppingBag} />Bag</Text>
                 <br/>

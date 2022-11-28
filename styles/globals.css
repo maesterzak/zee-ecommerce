@@ -70,3 +70,10 @@ h3{
     background: black;
   }
 }
+
+@media (max-width:960px){
+  .cartAmount{
+    top:-7px
+  }
+
+}

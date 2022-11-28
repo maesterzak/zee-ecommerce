@@ -57,6 +57,12 @@
 }
 
 @media (max-width:960px) {
+    .shop_card_footer{
+        height: 30px;
+    }
+    .add_Cart, .minus_Cart{
+        font-size: unset;
+    }
     .wishlist{
         position: absolute;
         top: 10px;
