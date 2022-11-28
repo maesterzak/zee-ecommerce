@@ -226,8 +226,9 @@ function Footer(params) {
         
         <Grid.Container css={{background: "$linkColor"}} >
             <Grid css={{"color":"White", padding:"5px"}} xs={isMd ? 12: 8}>
-            Copyright © 2022 Gecko all rights reserved. Powered by The4
-
+                <Text>
+            Copyright © 2022 3plezee  all rights reserved. Powered by @devmaesters
+            </Text>
             </Grid>
             
             

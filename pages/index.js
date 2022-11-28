@@ -72,7 +72,7 @@ export default function Home() {
           <Grid.Container css={{p:"20px"}} gap={2}>
             {Categoryitems.map((item, index)=>{
               return(
-                <React.Fragment>
+                <React.Fragment key={index}>
                 <CategoryCard mq={isMd} item={item} />
                 </React.Fragment>
               )}
@@ -84,7 +84,7 @@ export default function Home() {
           <Grid.Container css={{paddingLeft:"5vw", paddingRight:"5vw"}} gap={1} >
             {LatestProducts.map((item, index)=>{
               return(
-                <React.Fragment>
+                <React.Fragment key={index}>
                   <ShopCard mq={isMd} item={item} />
                 </React.Fragment>
               )
@@ -113,7 +113,7 @@ export default function Home() {
           <Grid.Container css={{paddingLeft:"5vw", paddingRight:"5vw"}} gap={1} >
             {LatestProducts.map((item, index)=>{
               return(
-                <React.Fragment>
+                <React.Fragment key={index}>
                   <ShopCard mq={isMd} item={item} />
                 </React.Fragment>
               )
@@ -129,7 +129,7 @@ export default function Home() {
             
             {InstagramPics.map((item, index)=>{
               return(
-                <Grid xs={isMd ? 4: 2}>
+                <Grid key={index} xs={isMd ? 4: 2}>
                   <Card 
                   isHoverable
                   isPressable
