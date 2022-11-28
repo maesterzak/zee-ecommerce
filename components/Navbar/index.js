@@ -2,7 +2,7 @@ import { Container, Row, Col, Image } from '@nextui-org/react';
 import { Navbar, Text, Avatar, Dropdown, Input } from "@nextui-org/react";
 // import { Layout } from "./Layout.js";
 import { AcmeLogo } from "./AcmeLogo.js";
-import { SearchIcon } from "./SearchIcon.js";
+import { SearchIcon } from "./searchIcon.js";
 import { Link } from '@nextui-org/react';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Switch, useTheme } from '@nextui-org/react'
