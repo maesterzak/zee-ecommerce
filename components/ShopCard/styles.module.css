@@ -55,3 +55,18 @@
     margin-right: 5px;
     
 }
+
+@media (max-width:960px) {
+    .wishlist{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10%;
+        height: 10%;
+        padding: 5px;
+        color: #8e7459;
+        /* background: white; */
+        background: var(--nextui--navbarBlurBackgroundColor);
+        backdrop-filter: saturate(180%) blur(var(--nextui--navbarBlur))
+    }
+}

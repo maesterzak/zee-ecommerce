@@ -233,7 +233,7 @@ function NavbarWrapper(params) {
                 <Avatar
                   bordered
                   as="button"
-                  color="primary"
+                  color="warning"
                   size="md"
                   src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                 />

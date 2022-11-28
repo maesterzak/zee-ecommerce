@@ -13,7 +13,7 @@ import Button1 from '../components/Buttons/Button1';
 import Footer from '../components/Footer';
 import Button2 from '../components/Buttons/Button2';
 const AutoplaySlider = withAutoplay(AwesomeSlider)
-import { faCartShopping, faHeart, faHeartbeat, faHeartCirclePlus, faSearch, faStore } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faShoppingBag, faHeart, faHeartbeat, faHeartCirclePlus, faSearch, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Home() {
@@ -205,14 +205,14 @@ export default function Home() {
                 </div>
                 <div className="col-1">
                 
-                <Text><FontAwesomeIcon icon={faHeartCirclePlus}  size={'sm'} />Wish</Text>
+                <Text><FontAwesomeIcon icon={faHeartCirclePlus}  size={'sm'} />Wishlist</Text>
                 <br/>
                 
 
                 </div>
                 <div className="col-1">
                 
-                <Text><FontAwesomeIcon icon={faCartShopping} size={'sm'} />Cart</Text>
+                <Text><FontAwesomeIcon size={'sm'} icon={faShoppingBag} />Bag</Text>
                 <br/>
                 
 
