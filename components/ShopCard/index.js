@@ -8,18 +8,18 @@ function ShopCard(params) {
     
     return(
         <>
-        <Grid className={styles.Shop_Card} xs={mq ? 6:4}>
+        <Grid  xs={mq ? 6:4}>
                 <Card variant={'shadow'}
                 css={{borderRadius:"unset"}}
                 isHoverable
                 >
                     <div className='position-relative'>
                     <Card.Image
-                    isPressable
+                    
                     css={{"height": mq ? "40vh":"75vh"}}
                   src={item.image}
                 //   width="100%"
-                  
+                  showSkeleton
                   objectFit="cover"
                   alt="Card example background"
                   >
@@ -37,43 +37,8 @@ function ShopCard(params) {
                      
 
                   </div>
-                    <div className={`row g-0 w-100 ${styles.shop_card_footer}`}>
-                        <div className='col-6 col-md-3 '>
-                            <div className={`row g-0 mx-1`}>
-                                <div className='col-3 d-flex justify-content-center align-items-center'>
-                                    <button className={`${styles.add_Cart}`}>+</button>
-                                </div>
-                                <div className='col-5'>
-                                    <input defaultValue={1} className={`${styles.input} text-center`} />
-                                </div>
-                                <div className='col-3 d-flex justify-content-center align-items-center'>
-                                <button isPressable className={`${styles.add_Cart}  `}>-</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div className='col-6 col-md-9 h-100'>
-                            <div className='row h-100'>
-                                <div className='col-9'>
-
-                                </div>
-                            
-                            <div className='col-2 d-flex justify-content-center align-items-center h-100'>
-                               
-                            <FontAwesomeIcon color='white'   icon={faShoppingBag} size={'1x'}/>
-                            
-
-                            </div>
-
-                            </div>
-                            
-
-                            
-
-                        </div>
-
-                    </div>
+                  
+                    
                     </div>
                   
                   <Card.Body css={{overflow:'hidden'}}>

@@ -3,12 +3,12 @@ import '../styles/globals.css'
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { Layout } from '../components/Layout';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { Montserrat } from '@next/font/google'
+import { Montserrat, Inter, Lato } from '@next/font/google'
 
 import '../styles/globals.css'
 import { useEffect } from "react";
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+const montserrat =Inter()
 function MyApp({ Component, pageProps }) {
   
   useEffect(() => {

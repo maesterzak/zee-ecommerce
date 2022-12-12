@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { useTheme, Text, Grid, Spacer, Card, Col, Row,Button, } from '@nextui-org/react';
+import { useTheme, Text, Grid, Spacer, Card, Col, Row,Button,  Container} from '@nextui-org/react';
 import AwesomeSlider from 'react-awesome-slider'
 import withAutoplay from 'react-awesome-slider/dist/autoplay'
 import 'react-awesome-slider/dist/styles.css'
@@ -68,7 +68,7 @@ export default function Home() {
 
           </AutoplaySlider>
           <Spacer />
-          
+          <Container fluid>
           <Grid.Container css={{p:"20px"}} gap={2}>
             {Categoryitems.map((item, index)=>{
               return(
@@ -80,8 +80,8 @@ export default function Home() {
             
           </Grid.Container>
                 <br />
-          <Text h3>LATEST PRODUCTS</Text>
-          <Grid.Container css={{paddingLeft:"5vw", paddingRight:"5vw"}} gap={1} >
+          <Text className='text-center' h3>LATEST PRODUCTS</Text>
+          <Grid.Container  gap={1} >
             {LatestProducts.map((item, index)=>{
               return(
                 <React.Fragment key={index}>
@@ -92,10 +92,12 @@ export default function Home() {
 
           </Grid.Container>
           <Spacer />
+          <div className='d-flex justify-content-center'>
           <Button2 text={"Load more"} />
+          </div>
           <Spacer />
 
-          <Text h3>OUR PRODUCTS</Text>
+          <Text className='text-center' h3>OUR PRODUCTS</Text>
 
           <Grid.Container css={{"display":"flex", "justifyContent":"center", 'gap':"10px"}}>
               <div className='our_products_buttons'>
@@ -186,55 +188,16 @@ export default function Home() {
 
 
           </Grid.Container>
+          </Container>
 
 
 
         
       </main>
 
-      <Footer />
-      {isMd && 
-        <Grid.Container css={{  borderTop:"white 2px solid", borderTopLeftRadius:"15px", borderTopRightRadius:"15px", background: "var(--nextui-colors-backgroundAlpha)",position:"sticky", bottom:0, height:"8vh", overflow:"hidden"}} >
-            
-            <div className="row  w-100 p-2 g-0 gap-4 d-flex justify-content-around">
-                <div className="col-1 g-grid justify-content-around">
-                
-                
-                <Text><FontAwesomeIcon style={{"fontSize":"2px"}} icon={faStore}  fontSize='10px' />Shop</Text>
-
-                </div>
-                <div className="col-1">
-                
-                <Text><FontAwesomeIcon icon={faHeartCirclePlus}  size={'sm'} />Wishlist</Text>
-                <br/>
-                
-
-                </div>
-                <div className="col-1 position-relative">
-                <div className='cartAmount'>
-                1
-              </div>
-                
-                <Text><FontAwesomeIcon size={'sm'} icon={faShoppingBag} />Bag</Text>
-                <br/>
-                
-
-                </div>
-                <div className="col-1">
-                  <Text>
-                <FontAwesomeIcon icon={faSearch} size={'sm'} />Search</Text>
-                
-                
-
-                </div>
-
-            </div>
-            
-            
-            
-        </Grid.Container>
-        }
-        <style jsx global>{`
+      
+      
+        {/* <style jsx global>{`
   html,
   body {
     padding: 0;
@@ -245,7 +208,7 @@ export default function Home() {
   * {
     box-sizing: border-box;
   }
-`}</style>
+`}</style> */}
     </div>
   )
 }

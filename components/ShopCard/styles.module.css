@@ -10,6 +10,10 @@
     padding: 5px;
 }
 
+.Shop_Card{
+    
+}
+
 .shop_card_footer{
     
     background: #b59677;
@@ -36,13 +40,14 @@
     width: 10%;
     height: 16%;
     padding: 5px;
-    color: #8e7459;
+    color: rgb(193, 176, 176);
+    
     /* background: white; */
     background: var(--nextui--navbarBlurBackgroundColor);
     backdrop-filter: saturate(180%) blur(var(--nextui--navbarBlur))
 }
 
-.add_Cart, .minus_Cart{
+/* .add_Cart, .minus_Cart{
     font-size: 30px;
     font-weight: bolder;
     color: white;
@@ -54,6 +59,18 @@
     border: 1px solid #8e7459;
     margin-right: 5px;
     
+} */
+.bag{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 10px;
+    background-color: #8e7459;
+    color: white;
 }
 
 @media (max-width:960px) {

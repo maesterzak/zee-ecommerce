@@ -36,7 +36,7 @@ const Button2=(params) => {
           
           
           auto 
-          css={{height:"45px", width:"60px",}}
+          css={{height:"40px", width:"30%",}}
           size="mysize"
           color="mycolor">
             {params.text}
