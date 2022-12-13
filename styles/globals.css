@@ -38,7 +38,7 @@ a {
 }
 .our_products_buttons  button:hover{
   color: var(--nextui-colors-text);
-  
+  background: #b59677;
 }
 .active_btn{
   background: #b59677;
@@ -74,6 +74,10 @@ h3{
 @media (max-width:960px){
   .cartAmount{
     top:-7px
+  }
+  .our_products_buttons button{
+    width: 100px;
+
   }
 
 }

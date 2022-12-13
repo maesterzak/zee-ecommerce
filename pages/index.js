@@ -32,14 +32,17 @@ export default function Home() {
 
   ]
   const LatestProducts = [
-    {"name":"BLUE COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"BLUE COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
     {"name":"RIBBED BODYCON DRESS", "price": 20, "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/products/g-01_1080x.jpg?v=1595905296"},
-    {"name":"CYAN CUFFED CHINO SHORTS", "price": 20, "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
-    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/products/g-01_1080x.jpg?v=1595905296"},
-    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1601762603339-fd61e28b698a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
-    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/products/g-01_1080x.jpg?v=1595905296"},
-    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"	https://images.unsplash.com/photo-1601762603339-fd61e28b698a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
-    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1601762603339-fd61e28b698a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"CYAN CUFFED CHINO SHORTS", "price": 20, "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"},
+    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1566206091558-7f218b696731?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1554412933-514a83d2f3c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1475180098004-ca77a66827be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+    {"name":"RED COTTON LEGGINGS", "price": 20, "image":"https://images.unsplash.com/photo-1571513722275-4b41940f54b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"},
+  
+    
   ]
   const Categoryitems = [
     {"name": "ACCESSORIES", "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/files/acessories_1728x.jpg?v=1613575958"},{"name":"CLOTHING", "image":"	https://cdn.shopify.com/s/files/1/0437/1913/1293/files/clothing_1728x.jpg?v=1613575958",},
@@ -68,8 +71,10 @@ export default function Home() {
 
           </AutoplaySlider>
           <Spacer />
-          <Container fluid>
-          <Grid.Container css={{p:"20px"}} gap={2}>
+          
+          
+          <Container fluid >
+          <Grid.Container gap={2}>
             {Categoryitems.map((item, index)=>{
               return(
                 <React.Fragment key={index}>
@@ -112,7 +117,7 @@ export default function Home() {
           <Spacer />
           <Spacer />
 
-          <Grid.Container css={{paddingLeft:"5vw", paddingRight:"5vw"}} gap={1} >
+          <Grid.Container  gap={1} >
             {LatestProducts.map((item, index)=>{
               return(
                 <React.Fragment key={index}>
@@ -125,6 +130,8 @@ export default function Home() {
 
           <Spacer />
 
+          
+          </Container>
           <Text h3>@ FOLLOW US ON INSTAGRAM</Text>
           <Spacer />
           <Grid.Container>
@@ -135,13 +142,13 @@ export default function Home() {
                   <Card 
                   isHoverable
                   isPressable
-                  css={{height:"20vh"}}
+                  css={{minHeight:"200px"}}
                   >
                   <Card.Image
                   src={item.image}
                   width="100%"
                   height="100%"
-                  objectFit="cover"
+                  objectFit='fill'
                   alt="Card example background"
                   >
                   </Card.Image>
@@ -188,7 +195,6 @@ export default function Home() {
 
 
           </Grid.Container>
-          </Container>
 
 
 

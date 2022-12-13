@@ -3,6 +3,8 @@ import { useMediaQuery } from "../mediaQuery";
 import { useTheme as useNextTheme } from 'next-themes'
 import { faCartShopping, faShoppingBag,faHeartCirclePlus, faSearch, faStore, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {MoonIcon} from '../Navbar/MoonIcon'
+import {SunIcon} from '../Navbar/SunIcon'
 
 function Mfooter(params) {
     const { setTheme } = useNextTheme();
@@ -18,9 +20,9 @@ function Mfooter(params) {
     return(
         <>
         {isMd && 
-        <Grid.Container css={{  borderTop:"white 2px solid", borderTopLeftRadius:"15px", borderTopRightRadius:"15px", background: "var(--nextui-colors-backgroundAlpha)",position:"sticky", bottom:0, height:"8vh", overflow:"hidden"}} >
+        <Grid.Container css={{  borderTop:"white 2px solid", borderTopLeftRadius:"15px", borderTopRightRadius:"15px", background: "var(--nextui-colors-backgroundAlpha)",position:"fixed", bottom:0, height:"8.5vh", overflow:"hidden"}} >
             
-            <div className="row  w-100 p-2 g-0 gap-4 d-flex justify-content-around">
+            <div className="row  w-100 p-1 g-0 gap-4 d-flex justify-content-around align-items-flex-start">
                 <div className="col-1 g-grid justify-content-around">
                 
                 
@@ -53,9 +55,13 @@ function Mfooter(params) {
                 </div>
                 <div className="col-1 d-flex ">
                  <Text className=''>
-                <Switch
+                 <Switch 
+                 shadow color="warning"
         checked={isDark}
-        onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')} />Theme</Text>
+        onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+        iconOn={<SunIcon filled />}
+          iconOff={<MoonIcon filled />}
+      />Theme</Text>
 
     
                 

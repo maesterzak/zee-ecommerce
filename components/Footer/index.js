@@ -94,24 +94,7 @@ function Footer(params) {
 
                 </div>
           </Collapse>
-          <Collapse title="Option C">
-          <div>
-                    
-                    <Spacer />
-                    <Text  color="white" >
-                        {Category.map((item, index)=>{
-                        return(
-                            <React.Fragment key={index}>
-                                {item}
-                                <Spacer />
-                            </React.Fragment>
-                        )}
-                        )}
-                        
-                    </Text>
-
-                </div>
-          </Collapse>
+          
         </Collapse.Group>
       </Grid>
             
@@ -225,8 +208,8 @@ function Footer(params) {
         </Grid.Container>
         
         <Grid.Container css={{background: "$linkColor"}} >
-            <Grid css={{"color":"White", padding:"5px"}} xs={isMd ? 12: 8}>
-                <Text>
+            <Grid css={{padding:"5px", marginBottom: isMd ? "70px": 0}}>
+                <Text css={{textAlign:"center"}} b>
             Copyright © 2022 3plezee  all rights reserved. Powered by @devmaesters
             </Text>
             </Grid>

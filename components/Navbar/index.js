@@ -9,7 +9,8 @@ import { Switch, useTheme } from '@nextui-org/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faHeartCirclePlus, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from '../mediaQuery/index';
-
+import { SunIcon } from './SunIcon';
+import { MoonIcon } from './MoonIcon';
 
 function NavbarWrapper(params) {
   const isMd = useMediaQuery(960);
@@ -107,8 +108,11 @@ function NavbarWrapper(params) {
           
       
       <Switch 
+      shadow color="warning"
         checked={isDark}
         onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+        iconOn={<SunIcon filled />}
+          iconOff={<MoonIcon filled />}
       />
       
               

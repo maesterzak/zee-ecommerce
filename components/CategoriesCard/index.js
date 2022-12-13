@@ -28,6 +28,8 @@ function CategoryCard(params) {
                   height="100%"
                   objectFit="cover"
                   alt="Card example background"
+                  showSkeleton
+                  maxDelay={10000}
                   >
                   </Card.Image>
 

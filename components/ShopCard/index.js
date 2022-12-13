@@ -15,13 +15,15 @@ function ShopCard(params) {
                 >
                     <div className='position-relative'>
                     <Card.Image
-                    
-                    css={{"height": mq ? "40vh":"75vh"}}
+                    css={{height:"100%"}}
+                    // css={{"height": mq ? "40vh":"75vh"}}
                   src={item.image}
                 //   width="100%"
                   showSkeleton
+                  placeholder='/images/img1.jpg'
                   objectFit="cover"
                   alt="Card example background"
+                  maxDelay={10000}
                   >
                       
                   </Card.Image>
