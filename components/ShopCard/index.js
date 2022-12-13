@@ -31,10 +31,20 @@ function ShopCard(params) {
                       <div>
                       <FontAwesomeIcon icon={faHeart} />
                       </div>
-                      <div className='p-1'>
+                      <div className='p-1 d-none d-md-block'>
                       <FontAwesomeIcon icon={faEye} />
                           
                       </div>
+                      
+                     
+
+                  </div>
+
+                  <div className={styles.addToCartWrapper}>
+                      <div>
+                      <FontAwesomeIcon rotate={280} icon={faCartShopping} />
+                      </div>
+                      
                       
                      
 
