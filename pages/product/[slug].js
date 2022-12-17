@@ -13,7 +13,7 @@ function ProductDetails() {
     const { slug } = router.query
     
     const product = LatestProducts.find(el=> el.slug === slug)
-    console.log("ffffF", slug, product)
+    
     return(
         <>
         <Container css={{paddingTop:"40px", maxWidth:"1504px", margin:0}} fluid>
@@ -26,6 +26,7 @@ function ProductDetails() {
                             return(
                                 <>
                                 <Card
+                                key={index}
                         variant="fiat"
                         css={{borderRadius:"0", marginBottom:"$5"}}
 
@@ -119,7 +120,7 @@ function ProductDetails() {
                      <Text>Categories : {product?.category}</Text>
                      <Text>Tags : {product?.tags.map((item, index)=>{
                          return(
-                             <span>{item}, </span>
+                             <span key={index}>{item}, </span>
                          )
                      })}</Text>
                         
