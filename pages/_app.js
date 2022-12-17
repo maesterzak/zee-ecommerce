@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
     theme: {
       colors: {
         // brand colors
-        primaryLight: '$green200',
+        primaryLight: '#4d5959',
         primaryLightHover: '$green300',
         primaryLightActive: '$green400',
         primaryLightContrast: '$green600',
@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
     theme: {
       colors: {
         // brand colors
-        primaryLight: '$green200',
+        primaryLight: '#4d5959',
         primaryLightHover: '$green300',
         primaryLightActive: '$green400',
         primaryLightContrast: '$green600',

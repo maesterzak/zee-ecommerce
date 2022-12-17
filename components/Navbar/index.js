@@ -41,9 +41,9 @@ function NavbarWrapper(params) {
             <Navbar.Link isActive href="#">
               Store
             </Navbar.Link>
-            <Navbar.Link href="#">Categories</Navbar.Link>
-            <Navbar.Link href="#">Latest Products</Navbar.Link>
-            <Navbar.Link href="#">Our Products</Navbar.Link>
+            <Navbar.Link href="#categories">Categories</Navbar.Link>
+            <Navbar.Link href="#latest-products">Latest Products</Navbar.Link>
+            <Navbar.Link href="#our-products">Our Products</Navbar.Link>
           </Navbar.Content>
         </Navbar.Brand>
         <Navbar.Content

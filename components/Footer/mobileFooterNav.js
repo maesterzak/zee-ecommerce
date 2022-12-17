@@ -22,46 +22,46 @@ function Mfooter(params) {
         {isMd && 
         <Grid.Container css={{  borderTop:"white 2px solid", borderTopLeftRadius:"15px", borderTopRightRadius:"15px", background: "var(--nextui-colors-backgroundAlpha)",position:"fixed", bottom:0, height:"8.5vh", overflow:"hidden"}} >
             
-            <div className="row  w-100 p-1 g-0 gap-4 d-flex justify-content-around align-items-flex-start">
+            <div className="row  w-100 p-2 g-0 gap-4 d-flex justify-content-around align-items-flex-start">
                 <div className="col-1 g-grid justify-content-around">
                 
                 
-                <Text><FontAwesomeIcon style={{"fontSize":"2px"}} icon={faStore}  fontSize='10px' />Shop</Text>
+                <Text><FontAwesomeIcon size={'2x'} icon={faStore}   />Shop</Text>
 
                 </div>
                 <div className="col-1">
                 
-                <Text><FontAwesomeIcon icon={faHeartCirclePlus}  size={'sm'} />Wishlist</Text>
+                <Text><FontAwesomeIcon icon={faHeartCirclePlus}  size={'2x'} />Wishlist</Text>
                 <br/>
                 
 
                 </div>
                 <div className="col-1 position-relative">
-                <div className='cartAmount'>
+                <div  className='cartAmount'>
                 1
               </div>
                 
-                <Text><FontAwesomeIcon size={'sm'} icon={faShoppingBag} />Bag</Text>
+                <Text><FontAwesomeIcon size={'2x'} icon={faShoppingBag} />Bag</Text>
                 <br/>
                 
 
                 </div>
                 <div className="col-1">
                   <Text>
-                <FontAwesomeIcon icon={faSearch} size={'sm'} />Search</Text>
+                <FontAwesomeIcon icon={faSearch} size={'2x'} />Search</Text>
                 
                 
 
                 </div>
                 <div className="col-1 d-flex ">
-                 <Text className=''>
+                 <div>
                  <Switch 
                  shadow color="warning"
         checked={isDark}
         onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
         iconOn={<SunIcon filled />}
           iconOff={<MoonIcon filled />}
-      />Theme</Text>
+      />Theme</div>
 
     
                 
