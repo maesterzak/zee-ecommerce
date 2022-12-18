@@ -90,7 +90,7 @@ function Mfooter(params) {
                       <Text css={{fontSize:"small", margin:"0"}}>${item.price} </Text>
                       <Spacer />
                       <Grid className='d-flex gap-2 align-items-center'>
-                      <FontAwesomeIcon color='#b59677' icon={faTrash} />
+                      <FontAwesomeIcon size='1x' color='#b59677' icon={faTrash} />
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
                                <Text css={{
