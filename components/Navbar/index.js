@@ -3,7 +3,7 @@ import { Navbar, Text, Avatar, Dropdown, Input, Popover } from "@nextui-org/reac
 // import { Layout } from "./Layout.js";
 import { AcmeLogo } from "./AcmeLogo.js";
 import { SearchIcon } from "./searchIcon.js";
-import { Link } from '@nextui-org/react';
+import Link from 'next/link';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Switch, useTheme } from '@nextui-org/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -102,7 +102,7 @@ function NavbarWrapper(params) {
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"300px", overflowY:"scroll", overflowX:"hidden"}}>
                 {LatestProducts.map((item, index)=>{
                   return(
-                    <Grid.Container css={{height:"auto", width:'100%', }}>
+                    <Grid.Container key={index} css={{height:"auto", width:'100%', }}>
                   <Grid xs={6}>
                   <Card
                                 isHoverable
@@ -179,16 +179,10 @@ function NavbarWrapper(params) {
               <div className='cartAmount'>
                 1
               </div>
-              <Popover placement={'bottom'}>
-              <Popover.Trigger>
-          <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} />
-          </Popover.Trigger>
-          <Popover.Content>
-              <Text css={{ p: "$10" }}>
-                This is the content of the popover for wishlist.
-              </Text>
-            </Popover.Content>
-                </Popover>
+              <Link className={`${styles.link}`} href='/wishlist'>
+          <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} /></Link>
+         
+          
           </div>
           </Navbar.Item>
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>

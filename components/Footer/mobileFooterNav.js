@@ -58,7 +58,7 @@ function Mfooter(params) {
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"400px", overflowY:"scroll", overflowX:"hidden"}}>
                 {LatestProducts.map((item, index)=>{
                   return(
-                    <Grid.Container css={{height:"auto", width:'70%', }}>
+                    <Grid.Container key={index} css={{height:"auto", width:'70%', }}>
                   <Grid xs={6}>
                   <Card
                                 isHoverable

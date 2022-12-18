@@ -27,3 +27,14 @@
     justify-content: center;
     align-items: center;
 }
+.link{
+    color:"yellow"!important
+    
+}
+
+.link:hover{
+    color:"var(--nextui-colors-text)"!important
+}
+.link::after{
+    color:"var(--nextui-colors-text)"!important
+}
