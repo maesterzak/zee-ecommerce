@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 function ShopCard(params) {
     const {mq, item, cardCount} = params
-    console.log("cccc",cardCount)
+    
     return(
         <>
         <Grid  xs={mq ? 6:cardCount}>
@@ -38,16 +38,13 @@ function ShopCard(params) {
                       <div>
                       <FontAwesomeIcon icon={faHeart} />
                       </div>
-                      <div className='p-1 d-none d-md-block'>
-                      <FontAwesomeIcon icon={faEye} />
-                          
-                      </div>
+                      
                       
                      
 
                   </div>
 
-                  <div className={styles.addToCartWrapper}>
+                  <div className={`${styles.addToCartWrapper} d-flex align-items-center justify-content-center`}>
                       <div>
                       <FontAwesomeIcon rotate={280} icon={faCartShopping} />
                       </div>

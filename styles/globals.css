@@ -108,6 +108,13 @@ h3{
   outline-offset: 1px;
 }
 
+.scrollbar::-webkit-scrollbar{
+  background: #483c2f;
+  width: 0.2em;
+}
+.scrollbar:hover::-webkit-scrollbar-thumb{
+  background: #b59677;
+}
 
 @media (prefers-color-scheme: linearGradient) {
   html {

@@ -10,3 +10,34 @@
     height: 40px;
     border-radius: 50%;
 }
+.wishList{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* padding: 9px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--nextui-colors-text);;
+    
+    
+}
+.wishList:hover{
+    border-color: #b59677;
+    color: #b59677;
+}
+
+.scrollbar::-webkit-scrollbar{
+    background: #483c2f;
+    width: 0.2em;
+}
+.scrollbar:hover::-webkit-scrollbar-thumb{
+    background: #b59677;
+}
+
+@media (max-width:960px){
+    .scrollbar{
+        overflow: hidden;
+    }
+
+}

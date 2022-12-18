@@ -1,10 +1,13 @@
-import { Card, Container, Grid, Row, Spacer, Text } from "@nextui-org/react";
+import { Card, Container, Grid, Spacer, Text } from "@nextui-org/react";
 import { useMediaQuery } from "../../components/mediaQuery";
 import { useRouter } from 'next/router'
 import styles from './styles.module.css'
 import { LatestProducts } from "../../utils/data";
 import React from 'react';
 import ShopCard from "../../components/ShopCard";
+import Button1 from "../../components/Buttons/Button1";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function ProductDetails() {
     const isMd = useMediaQuery(960);
@@ -20,12 +23,14 @@ function ProductDetails() {
             <Grid.Container>
             <Grid  xs={isMd ? 12: 12}>
                 <Grid.Container >
-                    <Grid  direction={isMd ? "row" :'column'} css={{gap:"$10", maxHeight:isMd ? "100px":"500px", overflowY:isMd ? "":"scroll", overflowX:isMd ? "scroll":"", order: isMd ? 1: 0}} xs={isMd ? 12: 1}>
+                    <Grid className={isMd ? `d-flex ${styles.scrollbar}`:`d-grid ${styles.scrollbar}`}  css={{gap:"10px", maxHeight:isMd ? "100px":"500px", overflowY:isMd ? "":"scroll", overflowX:isMd ? "scroll":"", order: isMd ? 1: 0}} xs={isMd ? 12: 1}>
                         <Grid xs={isMd ? 12: ''}  className={`${styles.carouselImagesWrapper}`}>
                         {product?.images.map((item, index)=>{
                             return(
                                 <>
                                 <Card
+                                isHoverable
+                                isPressable
                                 key={index}
                         variant="fiat"
                         css={{borderRadius:"0", marginBottom:"$5"}}
@@ -35,7 +40,7 @@ function ProductDetails() {
                             
                             
                             src={item}
-                            
+                            css={{height: isMd ? "90px":"auto"}}
                             showSkeleton
                             placeholder='/images/img1.jpg'
                             objectFit="cover"
@@ -77,9 +82,9 @@ function ProductDetails() {
                         
                     </Grid>
                     <Grid direction="column" css={{paddingLeft:isMd ? "":"30px", order: isMd ? 2: 2, paddingTop: isMd ? "20px":""}} xs={isMd ? 12: 5}>
-                    <Text css={{fontSize:"18px", color:"$primaryLight"}} h1>{product?.name}</Text>
+                    <Text b css={{fontSize:"18px", color:"$primaryLight"}} h1>{product?.name}</Text>
                     
-                    <Text css={{fontSize:"18px", color:"$primaryLight"}} h1>${product?.price}</Text>
+                    <Text b css={{fontSize:"18px", color:"$primaryLight"}} h1>${product?.price}</Text>
 
                     <Spacer />
 
@@ -110,8 +115,13 @@ function ProductDetails() {
                             
                             </div>  
                         <Spacer />
+                        <Grid className="d-flex mx-2 align-items-center gap-2">
+                            <Button1 text={"ADD TO CART"} /> <div className={`${styles.wishList}`}><FontAwesomeIcon size='1x' icon={faHeart} /></div>
+                        </Grid>
+
+                        <Spacer />
                      <Grid className="d-flex gap-3" direction="row">
-                     <Text >Size Guide</Text><Text >Delivery and return</Text><Text >Ask a question</Text>    
+                     <Text size={isMd ? '$sm':'$md'}>Size Guide</Text><Text size={isMd ? '$sm':'$md'} >Delivery and return</Text><Text size={isMd ? '$sm':'$md'} >Ask a question</Text>    
                      <Spacer />
                      
                     </Grid>    
@@ -136,7 +146,7 @@ function ProductDetails() {
                 <Text h3 className='text-center '>YOU MAY ALSO LIKE</Text>
                      <Spacer />
                 <Grid.Container  gap={2} >
-            {LatestProducts.map((item, index)=>{
+            {product?.similarProducts.map((item, index)=>{
               return(
                 <React.Fragment key={index}>
                   <ShopCard mq={isMd} item={item} cardCount = {3} />
