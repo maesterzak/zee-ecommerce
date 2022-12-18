@@ -4,12 +4,19 @@ import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { Layout } from '../components/Layout';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { Montserrat, Inter, Lato } from '@next/font/google'
-
+import {useState, createContext} from 'react'
+import dataContext from '../components/context/dataContext';
 import '../styles/globals.css'
 import { useEffect } from "react";
 
 const montserrat =Inter()
 function MyApp({ Component, pageProps }) {
+  const [cart, setCart] = useState([])
+
+  const data ={
+    cart:cart,
+    setCart:setCart
+  }
   
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
@@ -87,6 +94,7 @@ function MyApp({ Component, pageProps }) {
     }}
   >
     <NextUIProvider>
+      <dataContext.Provider value={data}>
       <Layout>
       <style jsx global>{`
         html {
@@ -95,6 +103,7 @@ function MyApp({ Component, pageProps }) {
       `}</style>
   <Component {...pageProps} />
   </Layout>
+  </dataContext.Provider>
   </NextUIProvider>
   </NextThemesProvider>
   )

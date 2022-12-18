@@ -116,7 +116,7 @@ function ProductDetails() {
                             </div>  
                         <Spacer />
                         <Grid className="d-flex mx-2 align-items-center gap-2">
-                            <Button1 text={"ADD TO CART"} /> <div className={`${styles.wishList}`}><FontAwesomeIcon size='1x' icon={faHeart} /></div>
+                            <Button1 text={"ADD TO CART"} /> <div className={`${styles.wishList} p-2`}><FontAwesomeIcon size='1x' icon={faHeart} /></div>
                         </Grid>
 
                         <Spacer />

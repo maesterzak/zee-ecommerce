@@ -14,8 +14,11 @@ import { MoonIcon } from './MoonIcon';
 import Button2 from '../Buttons/Button2.js';
 import { LatestProducts } from '../../utils/data.js';
 import styles from './styles.module.css'
-
+import dataContext from '../context/dataContext.js';
+import { useContext } from 'react';
 function NavbarWrapper(params) {
+  const value = useContext(dataContext)
+  const {cart, setCart} = value
   const isMd = useMediaQuery(960);
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
@@ -91,7 +94,7 @@ function NavbarWrapper(params) {
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>
             <div className='position-relative w-100 h-50 d-flex align-items-center'>
               <div className='cartAmount'>
-                1
+                {cart.length}
               </div>
               <Popover placement={'bottom'}>
               <Popover.Trigger>
@@ -134,7 +137,8 @@ function NavbarWrapper(params) {
                       <Text css={{fontSize:"small", margin:"0"}}>${item.price} </Text>
                       <Spacer />
                       <Grid className='d-flex gap-2 align-items-center'>
-                      <FontAwesomeIcon size='1x' color='#b59677' icon={faTrash} />
+                        <div style={{width:"20%"}}>
+                      <FontAwesomeIcon style={{fontSize:"small", cursor:"pointer"}} color='#b59677' icon={faTrash} /></div>
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
                                <Text css={{

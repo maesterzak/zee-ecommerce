@@ -67,7 +67,7 @@ export default function Home() {
             {LatestProducts.map((item, index)=>{
               return(
                 <React.Fragment key={index}>
-                  <ShopCard mq={isMd} item={item} cardCount={4} />
+                  <ShopCard mq={isMd} item={item} cardCount={3} />
                 </React.Fragment>
               )
             })}

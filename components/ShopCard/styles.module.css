@@ -10,8 +10,25 @@
     padding: 5px;
 }
 
-.Shop_Card{
+.moreInfoWrapper{
+    /* width: 60%; */
+    /* min-height: 200px; */
+    /* display: none; */
+    padding: 15px;
+    position: absolute;
+    bottom: 20%;
+    left: -200%;
+    background: var(--nextui-colors-backgroundAlpha);
     
+}
+.ShopCard:hover  .moreInfoWrapper{
+    display: block;
+    /* background: red; */
+    animation:m_move_on 0.7s forwards;
+}
+@keyframes m_move_on {
+    from {left:-200%;}
+    to {left:20%;}
 }
 
 .shop_card_footer{
@@ -33,9 +50,9 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 10%;
+    width: 30px;
     height: 30px;
-    padding: 5px;
+    padding: 4px;
     color: rgb(193, 176, 176);
     
     /* background: white; */
@@ -43,39 +60,52 @@
     backdrop-filter: saturate(180%) blur(var(--nextui--navbarBlur))
 }
 
-/* .add_Cart, .minus_Cart{
-    font-size: 30px;
-    font-weight: bolder;
-    color: white;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    border: unset;
-    background-color: rgba(0,0,0,.08);
-    border: 1px solid #8e7459;
-    margin-right: 5px;
-    
-} */
+
 .addToCartWrapper{
     
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: -10px;
+    right: -50px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 10px;
-    background-color: #8e7459;
+    background-color: #8e7459c2;
     color: white;
+    cursor: pointer;
 
 }
-.product-card:hover + .addToCartWrapper{
-    display: block;
+.addToCartWrapper:hover{
+    background: #8e7459;
 }
+
+.ShopCard:hover  .addToCartWrapper{
+    
+    /* background: red; */
+    animation:c_move_on 0.6s forwards;
+}
+@keyframes c_move_on {
+    from {right:-50px;}
+    to {right:10px;}
+}
+
 
 
 @media (max-width:960px) {
+    .moreInfoWrapper{
+        display: none;
+    }
+    .ShopCard:hover  .moreInfoWrapper{
+        display: block;
+        /* background: red; */
+        animation: unset;
+    }
+    .ShopCard:hover  .addToCartWrapper{
+    
+        /* background: red; */
+        animation: unset;
+    }
     .shop_card_footer{
         height: 30px;
     }
@@ -86,9 +116,9 @@
         position: absolute;
         top: 8px;
         right: 8px;
-        width: 20px;
-        height: 30px;
-        padding: 5px;
+        width: 25px;
+        height: 25px;
+        padding: 3px;
         color: #8e7459;
         /* background: white; */
         background: var(--nextui--navbarBlurBackgroundColor);
