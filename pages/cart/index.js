@@ -34,7 +34,7 @@ function Cart(){
                 return(
 
                
-            <Grid.Container css={{marginBottom: "20px"}} direction="row">
+            <Grid.Container key={index} css={{marginBottom: "20px"}} direction="row">
                 <Grid css={{width:"45%"}} >
                     
                     <Grid className="d-flex" >
