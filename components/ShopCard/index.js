@@ -97,7 +97,7 @@ function ShopCard(params) {
                   </Link>
                   <div className={styles.wishlist}>
                       
-                      <FontAwesomeIcon pulse icon={faHeart} />
+                      <FontAwesomeIcon icon={faHeart} />
                      
                       
                       
