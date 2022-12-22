@@ -91,7 +91,7 @@ function Mfooter(params) {
                       <Spacer />
                       <Grid className='d-flex gap-2 align-items-center'>
                         
-                      <FontAwesomeIcon style={{height:"100%"}} size='sm' color='#b59677' icon={faTrash} />
+                      <FontAwesomeIcon  size='sm' color='#b59677' icon={faTrash} />
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
                                <Text css={{
@@ -124,7 +124,7 @@ function Mfooter(params) {
                 <Text h5>Sub total: $400</Text>
                 <Text p> Taxes, shipping and discounts codes calculated at checkout</Text>
                 <Grid.Container className='d-flex justify-content-between'>
-                  <Button2 text='Cart' /><Button2 text='Checkout' />
+                  <Link href={'/cart'}><Button2 text='Cart' /></Link><Button2 text='Checkout' />
 
                 </Grid.Container>
 
