@@ -53,7 +53,7 @@ function Mfooter(params) {
 
                 <Text><FontAwesomeIcon size={'2x'} icon={faShoppingBag} />Bag</Text>
                 </Popover.Trigger>
-                <Popover.Content css={{maxHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
+                <Popover.Content css={{minHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
                 <Text h3>Mini-Cart</Text>
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"400px", overflowY:"scroll", overflowX:"hidden"}}>
                 {LatestProducts.map((item, index)=>{
@@ -90,7 +90,8 @@ function Mfooter(params) {
                       <Text css={{fontSize:"small", margin:"0"}}>${item.price} </Text>
                       <Spacer />
                       <Grid className='d-flex gap-2 align-items-center'>
-                      <FontAwesomeIcon size='1x' color='#b59677' icon={faTrash} />
+                        
+                      <FontAwesomeIcon style={{height:"100%"}} size='sm' color='#b59677' icon={faTrash} />
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
                                <Text css={{
@@ -111,6 +112,7 @@ function Mfooter(params) {
                           </div>
 
                         </div>
+                        
                         
                       </Grid>
                   </Grid>

@@ -8,14 +8,22 @@ import ShopCard from "../../components/ShopCard";
 import Button1 from "../../components/Buttons/Button1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 
 function ProductDetails() {
+    const [mainImageIndex, setMainImageIndex] = useState(undefined)
     const isMd = useMediaQuery(960);
     const router = useRouter()
    
     const { slug } = router.query
     
     const product = LatestProducts.find(el=> el.slug === slug)
+    useEffect(()=>{
+      ImageHandler(0)
+    }, [slug])
+    const ImageHandler = (imageIndex) => {
+      setMainImageIndex(imageIndex)
+    };
     
     return(
         <>
@@ -38,7 +46,7 @@ function ProductDetails() {
                         >
                             <Card.Image
                             
-                            
+                            onClick={()=>ImageHandler(index)}
                             src={item}
                             css={{height: isMd ? "90px":"auto"}}
                             showSkeleton
@@ -68,7 +76,7 @@ function ProductDetails() {
                             <Card.Image
                             
                             
-                            src={product?.images[0]}
+                            src={product?.images[mainImageIndex]}
                             
                             showSkeleton
                             placeholder='/images/img1.jpg'

@@ -13,6 +13,38 @@ function ShopCard(params) {
   const {cart, setCart} = value
     const {mq, item, cardCount} = params
 
+
+    //stt
+    const CartController = (
+      param
+    ) => {
+      //get the current value of cart from localstorage
+      const localCart = localStorage.getItem("cart");
+      
+      console.log(localCart)
+      // check if a product with the same attributes and slug exist in cart. Return it's index or return -1 if not found
+      if (localCart != undefined) {
+          //parse the current value of cart
+            const cartContent = JSON.parse(localCart);
+            console.log(cartContent)
+            const index = cartContent["cart"].findIndex(
+                (item) => isEqual(item.slug, param.slug) && isEqual(item.attributes, param.attributes)
+              );
+
+             console.log("oe", index)
+      }
+      else{
+        // let CartContent = [{cart:[]}, {cartAmount:0}]
+        // let content = JSON.stringify(param),
+        
+        //   localStorage.setItem('cart', JSON.stringify(param))
+      }
+      
+     
+    };
+
+    //ee
+
     const addToCart = (e)=>{
       e.preventDefault();
     // get data from form
@@ -20,7 +52,19 @@ function ShopCard(params) {
       const form_values = Object.fromEntries(formData);
 
       let product = LatestProducts.find((el)=>el.slug === form_values.slug)
-      console.log("hj", product)
+      
+      let prod = {
+        action: "add",
+        name: product.name,
+        price: product.price,
+        slug: product.slug,
+        attributes:{color: "blue", size:"xl"},
+        itemQuantity: 3
+      }
+      CartController(prod)
+      
+      
+      
     }
     
     return(

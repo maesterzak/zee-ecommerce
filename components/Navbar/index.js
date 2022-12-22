@@ -94,7 +94,7 @@ function NavbarWrapper(params) {
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>
             <div className='position-relative w-100 h-50 d-flex align-items-center'>
               <div className='cartAmount'>
-                {cart.length}
+                {cart.cartAmount}
               </div>
               <Popover placement={'bottom'}>
               <Popover.Trigger>
@@ -138,7 +138,7 @@ function NavbarWrapper(params) {
                       <Spacer />
                       <Grid className='d-flex gap-2 align-items-center'>
                         <div style={{width:"20%"}}>
-                      <FontAwesomeIcon style={{fontSize:"small", cursor:"pointer"}} color='#b59677' icon={faTrash} /></div>
+                      <FontAwesomeIcon  size='sm' style={{fontSize:"small", cursor:"pointer", height:"90%"}} color='#b59677' icon={faTrash} /></div>
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
                                <Text css={{
@@ -181,7 +181,7 @@ function NavbarWrapper(params) {
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>
             <div className='position-relative w-100 h-100'>
               <div className='cartAmount'>
-                1
+                0
               </div>
               <Link className={`${styles.link}`} href='/wishlist'>
           <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} /></Link>

@@ -11,7 +11,17 @@ import { useEffect } from "react";
 
 const montserrat =Inter()
 function MyApp({ Component, pageProps }) {
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState({cart:[], cartAmount:0})
+  // if(localStorage?.getItem('cart') === null){
+  //   localStorage.setItem('cart', JSON.stringify({"cart":[],"cartAmount":0}))
+    
+  // }
+  // else{
+  //   let localCart = localStorage.getItem('cart')
+  //   const cart = JSON.parse(localCart);
+  //   setCart({cart:cart, cartAmount: cart.length})
+
+  // }
 
   const data ={
     cart:cart,

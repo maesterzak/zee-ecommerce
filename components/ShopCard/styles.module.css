@@ -116,9 +116,12 @@
         position: absolute;
         top: 8px;
         right: 8px;
-        width: 25px;
-        height: 25px;
+        width: 17px;
+        height: 17px;
         padding: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #8e7459;
         /* background: white; */
         background: var(--nextui--navbarBlurBackgroundColor);
@@ -129,8 +132,8 @@
         display: block;
         bottom: 10px;
         right: 10px;
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         overflow: hidden;
         padding: 4px;
