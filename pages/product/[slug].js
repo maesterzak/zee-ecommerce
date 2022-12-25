@@ -55,7 +55,7 @@ function ProductDetails() {
                             showSkeleton
                             placeholder='/images/img1.jpg'
                             objectFit="cover"
-                            alt={product.name}
+                            alt={product?.name}
                             maxDelay={10000}>
                             </Card.Image>
 
@@ -84,7 +84,7 @@ function ProductDetails() {
                             showSkeleton
                             placeholder='/images/img1.jpg'
                             objectFit="cover"
-                            alt={product.name}
+                            alt={product?.name}
                             maxDelay={10000}>
                             </Card.Image>
 
