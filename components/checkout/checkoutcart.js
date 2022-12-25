@@ -13,7 +13,7 @@ function CheckoutCart(){
         
         {LatestProducts.map((item, index)=>{
             return(
-                <Grid.Container css={{padding:'20px'}} >
+                <Grid.Container key={index} css={{padding:'20px'}} >
             <Grid xs={'8'}>
         <Card css={{width:"100px", height:"100px", position:'relative', overflow:'unset'}}>
                             <Card.Image
@@ -37,7 +37,7 @@ function CheckoutCart(){
                         </Grid>
 
                         <Grid className="d-flex justify-content-center align-items-center">
-                            <Text css={{textAlign:'end'}}>$ 300</Text>
+                            <Text b css={{textAlign:'end'}}>$ 300</Text>
                         </Grid>
 
                         </Grid.Container>
