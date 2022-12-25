@@ -33,10 +33,10 @@ const Button2=(params) => {
     });
     return (
         <MyStyledButton 
-          
-          
+          type={params.type ?? 'button'}
+          // disabled= {params.disabled ?? false}
           auto 
-          css={{height:"40px", width:"30%",}}
+          css={{height:params.height ?? "40px", width: params.width ?? "30%", fontSize: params.fontSize ?? "auto"}}
           size="mysize"
           color="mycolor">
             {params.text}

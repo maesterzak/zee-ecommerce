@@ -16,6 +16,9 @@ import { LatestProducts } from '../../utils/data.js';
 import styles from './styles.module.css'
 import dataContext from '../context/dataContext.js';
 import { useContext } from 'react';
+import Image from 'next/image';
+
+
 function NavbarWrapper(params) {
   const value = useContext(dataContext)
   const {cart, setCart} = value
@@ -92,13 +95,19 @@ function NavbarWrapper(params) {
             
           </Navbar.Item>
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>
-            <div className='position-relative w-100 h-50 d-flex align-items-center'>
+            <div className='position-relative d-flex align-items-center'>
               <div className='cartAmount'>
                 {cart.cartAmount}
               </div>
-              <Popover placement={'bottom'}>
-              <Popover.Trigger>
-          <FontAwesomeIcon size={'2x'} icon={faShoppingBag} />
+              <Popover placement={'top'}>
+              <Popover.Trigger><Text className='d-flex align-items-end my-0'>
+              <Image 
+                        src={isDark ?  '/svg/cart-light.svg': '/svg/cart-dark.svg'}
+                        width='50'
+                        height={'50'}
+                        alt=""
+                        style={{ cursor:"pointer"}}
+                      /></Text>
           </Popover.Trigger>
           <Popover.Content css={{maxHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
                 <Text h3>Mini-Cart</Text>
@@ -178,13 +187,20 @@ function NavbarWrapper(params) {
                 </Popover>
           </div>
           </Navbar.Item>
-          <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>
-            <div className='position-relative w-100 h-100'>
+          <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"10px"}}>
+            <div className='position-relative w-100 '>
               <div className='cartAmount'>
                 0
               </div>
               <Link className={`${styles.link}`} href='/wishlist'>
-          <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} /></Link>
+          {/* <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} /> */}
+          <Image
+                        src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
+                        width='50'
+                        height={'50'}
+                      />
+          
+          </Link>
          
           
           </div>

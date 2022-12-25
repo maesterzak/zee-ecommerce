@@ -118,7 +118,7 @@ export  const LatestProducts = [
     "description": "3 A pair of twill woven shorts featuring slanted front pockets, buttoned back pockets, a zip pocket, buttoned waist, and keychain loop.",
     "inStock":true,
     "colors":["blue", 'green', 'yellow', 'brown'],
-    "sizes":["x", "xl", "xs", "xll"],
+    "sizes":["X", "XL", "XS", "XLL"],
     "category": "clothes",
     "similarProducts":[
 

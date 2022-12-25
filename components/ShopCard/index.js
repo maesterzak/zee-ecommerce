@@ -1,4 +1,4 @@
-import {  faCartShopping, faCartArrowDown, faRotateBack, faHeart, faEye, faShoppingCart, faShoppingBasket, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import {  faCartShopping, faCartArrowDown, faRotateBack, faHeart, faEye, faShoppingCart, faShoppingBasket, faShoppingBag, faHouseCrack } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Card, Grid, Spacer, Text} from '@nextui-org/react'
 import Link from 'next/link';
@@ -7,9 +7,13 @@ import dataContext from '../context/dataContext';
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { LatestProducts } from '../../utils/data';
+import Image from 'next/image';
+import { useTheme } from 'next-themes'
+
 
 function ShopCard(params) {
   const value = useContext(dataContext)
+  const { isDark, type } = useTheme();
   const {cart, setCart} = value
     const {mq, item, cardCount} = params
 
@@ -69,7 +73,7 @@ function ShopCard(params) {
     
     return(
         <>
-        <Grid   xs={mq ? 6:cardCount}>
+        <Grid   xs={mq ? 6:cardCount ?? 3}>
                 <Card variant={'shadow'}
                 css={{borderRadius:"unset"}}
                 isHoverable
@@ -97,12 +101,12 @@ function ShopCard(params) {
                   </Link>
                   <div className={styles.wishlist}>
                       
-                      <FontAwesomeIcon icon={faHeart} />
-                     
-                      
-                      
-                     
-
+                      {/* <FontAwesomeIcon size='1x' icon={"fa-thin fa-heart"} /> */}
+                      <Image
+                        src={'/svg/heart-active.svg'}
+                        width='50'
+                        height={'50'}
+                      />
                   </div>
                   <form onSubmit={addToCart}>
                     <input name='slug' type={'hidden'} value={item.slug} />
@@ -136,7 +140,12 @@ function ShopCard(params) {
 
                   <button type='submit' className={`${styles.addToCartWrapper} btn d-flex align-items-center justify-content-center`}>
                       
-                      <FontAwesomeIcon size='1x' icon={faCartShopping} />
+                  <Image
+                        src={'/svg/cart-light.svg'}
+                        width='50'
+                        height={'50'}
+                        // style={{margin:"0"}}
+                      />
                       
                       
                       

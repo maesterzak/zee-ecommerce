@@ -9,11 +9,14 @@ import Button1 from "../../components/Buttons/Button1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import {useTheme } from '@nextui-org/react'
 
 function ProductDetails() {
     const [mainImageIndex, setMainImageIndex] = useState(undefined)
     const isMd = useMediaQuery(960);
     const router = useRouter()
+    const { isDark, type } = useTheme();
    
     const { slug } = router.query
     
@@ -52,7 +55,7 @@ function ProductDetails() {
                             showSkeleton
                             placeholder='/images/img1.jpg'
                             objectFit="cover"
-                            alt="Card example background"
+                            alt={product.name}
                             maxDelay={10000}>
                             </Card.Image>
 
@@ -81,7 +84,7 @@ function ProductDetails() {
                             showSkeleton
                             placeholder='/images/img1.jpg'
                             objectFit="cover"
-                            alt="Card example background"
+                            alt={product.name}
                             maxDelay={10000}>
                             </Card.Image>
 
@@ -124,7 +127,12 @@ function ProductDetails() {
                             </div>  
                         <Spacer />
                         <Grid className="d-flex mx-2 align-items-center gap-2">
-                            <Button1 text={"ADD TO CART"} /> <div className={`${styles.wishList} p-2`}><FontAwesomeIcon size='1x' icon={faHeart} /></div>
+                            <Button1 text={"ADD TO CART"} /> <div className={`${styles.wishList} p-2`}><Image
+                        src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
+                        width='50'
+                        height={'50'}
+                        alt=""
+                      /></div>
                         </Grid>
 
                         <Spacer />

@@ -4,12 +4,12 @@ body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
-  width: 100vw !important;
+  /* width: 100vw !important; */
   position: relative;
   background: var(--nextui-colors-background);
   font-family: Montserrat;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 
@@ -38,8 +38,10 @@ a:hover{
 }
 .our_products_buttons  button{
   border: 2px solid #b59677;
-  width: 120px;
-  height: 50px;
+  width: 100px;
+  height: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
   color: var(--nextui-colors-text);
   
 
@@ -61,8 +63,8 @@ h3{
   position: absolute;
   width: 20px;
   height: 20px;
-  right: -15px;
-  top: -15px;
+  right: -10px;
+  top: -1px;
   background-color: #b59677;
   border-radius: 50%;
   color: white;
@@ -134,7 +136,9 @@ h3{
 
 @media (max-width:960px){
   .cartAmount{
-    top:-4px
+    top:-4px;
+    right: -10px;
+    top: -1px;
   }
   .our_products_buttons button{
     width: 100px;

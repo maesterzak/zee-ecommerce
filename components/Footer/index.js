@@ -208,8 +208,8 @@ function Footer(params) {
         </Grid.Container>
         
         <Grid.Container css={{background: "$linkColor"}} >
-            <Grid css={{padding:"5px", marginBottom: isMd ? "70px": 0}}>
-                <Text css={{textAlign:"center"}} b>
+            <Grid css={{padding:"5px", marginBottom: isMd ? "50px": 0}}>
+                <Text css={{textAlign:"center"}} >
             Copyright © 2022 3plezee  all rights reserved. Powered by @devmaesters
             </Text>
             </Grid>

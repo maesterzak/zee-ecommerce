@@ -9,6 +9,7 @@ import { LatestProducts} from '../../utils/data';
 import styles from './styles.module.css'
 import Button2 from '../Buttons/Button2';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Mfooter(params) {
     const { setTheme } = useNextTheme();
@@ -24,13 +25,18 @@ function Mfooter(params) {
     return(
         <>
         {isMd && 
-        <Grid.Container css={{  borderTop:"white 2px solid", borderTopLeftRadius:"15px", borderTopRightRadius:"15px", background: "var(--nextui-colors-backgroundAlpha)",position:"fixed", bottom:0, height:"70px", overflow:"hidden"}} >
+        <Grid.Container css={{  borderTop:"white 2px solid", borderTopLeftRadius:"15px", borderTopRightRadius:"15px", background: "var(--nextui-colors-backgroundAlpha)",position:"fixed", bottom:0, height:"55px", overflow:"hidden"}} >
             
-            <div className="row  w-100 px-3 py-1 g-0 gap-1 d-flex justify-content-around align-items-flex-start">
+            <div className="row  w-100 px-3 py-1 g-0 gap-1 d-flex justify-content-around align-items-flex-center">
                 <div className="col-1 g-grid justify-content-around mb-3">
                 
                 
-                <Text><Link className={`${styles.link}`} href='/'><FontAwesomeIcon size={'2x'} icon={faStore}   />Shop</Link></Text>
+                <Text><Link className={`${styles.link}`} href='/'><Image
+                        src={isDark ?  '/svg/store-light.svg': '/svg/store-dark.svg'}
+                        width='50'
+                        height={'50'}
+                        style={{margin:"0"}}
+                      /></Link></Text>
 
                 </div>
                 <div className="col-1 position-relative">
@@ -38,7 +44,12 @@ function Mfooter(params) {
                 1
               </div>
               
-                <Text><Link  className={`${styles.link}`} href='/wishlist'><FontAwesomeIcon icon={faHeartCirclePlus}  size={'2x'} />Wishlist</Link></Text>
+                <Text><Link  className={`${styles.link}`} href='/wishlist'><Image
+                        src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
+                        width='50'
+                        height={'50'}
+                        style={{margin:"0"}}
+                      /></Link></Text>
                 
                 <br/>
                 
@@ -51,7 +62,12 @@ function Mfooter(params) {
               <Popover placement={'top'}>
               <Popover.Trigger >
 
-                <Text><FontAwesomeIcon size={'2x'} icon={faShoppingBag} />Bag</Text>
+                <Text><Image
+                        src={isDark ?  '/svg/cart-light.svg': '/svg/cart-dark.svg'}
+                        width='50'
+                        height={'50'}
+                        // style={{margin:"0"}}
+                      /></Text>
                 </Popover.Trigger>
                 <Popover.Content css={{minHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
                 <Text h3>Mini-Cart</Text>
@@ -136,7 +152,12 @@ function Mfooter(params) {
                 <Popover placement={'top'}>
               <Popover.Trigger>
                   <Text>
-                <FontAwesomeIcon icon={faSearch} size={'2x'} />Search</Text>
+                  <Image
+                        src={isDark ?  '/svg/search-light.svg': '/svg/search-dark.svg'}
+                        width='50'
+                        height={'50'}
+                        // style={{margin:"0"}}
+                      /></Text>
                 </Popover.Trigger>
                 <Popover.Content>
               <Text>Search popover</Text>
@@ -153,7 +174,7 @@ function Mfooter(params) {
         onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
         iconOn={<SunIcon filled />}
           iconOff={<MoonIcon filled />}
-      />Theme</div>
+      /></div>
 
     
                 
