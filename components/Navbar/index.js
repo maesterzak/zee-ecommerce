@@ -1,39 +1,61 @@
 import { Card, Grid, Spacer } from '@nextui-org/react';
 import { Navbar, Text, Avatar, Dropdown, Input, Popover } from "@nextui-org/react";
-// import { Layout } from "./Layout.js";
 import { AcmeLogo } from "./AcmeLogo.js";
 import { SearchIcon } from "./searchIcon.js";
 import Link from 'next/link';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Switch, useTheme } from '@nextui-org/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeartCirclePlus, faShoppingBag, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from '../mediaQuery/index';
 import { SunIcon } from './SunIcon';
 import { MoonIcon } from './MoonIcon';
-import Button2 from '../Buttons/Button2.js';
-import { LatestProducts } from '../../utils/data.js';
 import styles from './styles.module.css'
-import dataContext from '../context/dataContext.js';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Image from 'next/image';
-
+import ButtonLink from '../Buttons/ButtonLink.js';
+import { useRouter } from 'next/router'
+import { storeContext } from "../../components/context/Store";
+import React from 'react'
 
 function NavbarWrapper(params) {
-  const value = useContext(dataContext)
-  const {cart, setCart} = value
+  const router = useRouter()
+  const {state, dispatch} = useContext(storeContext);
   const isMd = useMediaQuery(960);
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
+  useEffect(()=>{
+    dispatch({ type: "SET_CART"});
+  }, [])
     const collapseItems = [
         "Store",
         
         "Categories",
         "Latest products",
         "Our products",
-        "Dashboard",
+        
         
       ];
+
+      const ChangeCart = (action, product)=>{
+              
+        let prod = {
+          
+          name: product.name,
+          price: product.price,
+          slug: product.slug,
+          attributes: product.attributes,
+          quantity: 1
+        }
+        if (action === 'remove') {
+          dispatch({ type: "CART_REMOVE_ITEM", payload: { ...prod } });
+        }
+        else if(action === 'add'){
+          dispatch({ type: "CART_ADD_ITEM", payload: { ...prod } });
+        }
+        else if(action === 'delete'){
+          dispatch({ type: "CART_DELETE_ITEM", payload: { ...prod } });
+        }
+        
+      }
     
     return(
         <>
@@ -47,12 +69,12 @@ function NavbarWrapper(params) {
             3PLEZEE
           </Text>
           <Navbar.Content enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
-            <Navbar.Link isActive href="#">
+            <Navbar.Link isActive href="/">
               Store
             </Navbar.Link>
-            <Navbar.Link href="#categories">Categories</Navbar.Link>
-            <Navbar.Link href="#latest-products">Latest Products</Navbar.Link>
-            <Navbar.Link href="#our-products">Our Products</Navbar.Link>
+            <Navbar.Link href={router.asPath ==='/' ? "#categories": "/#categories"}>Categories</Navbar.Link>
+            <Navbar.Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"} >Latest Products</Navbar.Link>
+            <Navbar.Link href={router.asPath ==='/' ? "#our-products": "/#our-products"} >Our Products</Navbar.Link>
           </Navbar.Content>
         </Navbar.Brand>
         <Navbar.Content
@@ -97,7 +119,7 @@ function NavbarWrapper(params) {
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"25px"}}>
             <div className='position-relative d-flex align-items-center'>
               <div className='cartAmount'>
-                {cart.cartAmount}
+                {state.cart.amount}
               </div>
               <Popover placement={'top'}>
               <Popover.Trigger><Text className='d-flex align-items-end my-0'>
@@ -112,7 +134,7 @@ function NavbarWrapper(params) {
           <Popover.Content css={{maxHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
                 <Text h3>Mini-Cart</Text>
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"300px", overflowY:"scroll", overflowX:"hidden"}}>
-                {LatestProducts.map((item, index)=>{
+                {state.cart.content.map((item, index)=>{
                   return(
                     <Grid.Container key={index} css={{height:"auto", width:'100%', }}>
                   <Grid xs={6}>
@@ -127,7 +149,7 @@ function NavbarWrapper(params) {
                             <Card.Image
                             
                             
-                            src={item.images[0]}
+                            src={item.image}
                             // css={{height: isMd ? "90px":"auto"}}
                             showSkeleton
                             
@@ -142,29 +164,48 @@ function NavbarWrapper(params) {
                   </Grid>
                   <Grid direction='column' className='p-1' xs={6}>
                       <Text css={{fontSize:"small", margin:"0"}} h6>{item.name}</Text>
-                      <Text css={{fontSize:"small", margin:"0"}}>Yellow / XS </Text>
+                      
+                      {Object.values(item.attributes).map((e, index)=>{
+                        return(
+                          
+                          <React.Fragment key={index}>
+                            <Text className='mt-0 mb-0' s>
+                           {e} 
+                          </Text>
+                          </React.Fragment>
+
+                        )
+                      })}
+                      
+                   
+                         
                       <Text css={{fontSize:"small", margin:"0"}}>${item.price} </Text>
+                      
                       <Spacer />
-                      <Grid className='d-flex gap-2 align-items-center'>
-                        <div style={{width:"20%"}}>
-                      <FontAwesomeIcon  size='sm' style={{fontSize:"small", cursor:"pointer", height:"90%"}} color='#b59677' icon={faTrash} /></div>
+                      <Grid className='d-flex gap-1 align-items-center'>
+                        <div style={{width:"20%", cursor:'pointer'}}>
+                        <Image
+                        onClick={()=>ChangeCart('delete', item)}
+                        src={isDark ?  '/svg/trash-dark.svg':'/svg/trash-light.svg'}
+                        width='15'
+                        height={'15'}
+                        alt=''
+                        
+                        // style={{margin:"0"}}
+                      /></div>
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
-                               <Text css={{
-                                 '@hover':{
-                                   color:"#b59677"
-                                 }
-                               }} b>-</Text>
+                               <button style={{height:'100%', border:'none', color:"#b59677", fontWeight:'bolder', fontSize:'30px'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' onClick={()=>ChangeCart('remove', item)} 
+                                 
+                                >-</button>
                           </div>
                           <div className={`${styles.miniCartCount}`}>
-                          <Text b >1</Text>
+                          <button style={{height:'100%', border:'none', color:"#b59677", fontSize:'20px'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' >{item.quantity}</button>
                           </div>
                           <div className={`${styles.miniCartBtn}`}>
-                          <Text css={{
-                                 '@hover':{
-                                   color:"#b59677"
-                                 }
-                               }} b>+</Text>
+                          <button style={{height:'100%', border:'none', color:"#b59677", fontWeight:'bolder', fontSize:'25px'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' onClick={()=>ChangeCart('add', item)} 
+                                 
+                                 >+</button>
                           </div>
 
                         </div>
@@ -179,7 +220,8 @@ function NavbarWrapper(params) {
                 <Text h5>Sub total: $400</Text>
                 <Text p> Taxes, shipping and discounts codes calculated at checkout</Text>
                 <Grid.Container className='d-flex justify-content-between'>
-                <Link href={'/cart'}><Button2 text='Cart' /></Link><Button2 text='Checkout' />
+                <ButtonLink text='Cart' href='/cart' /><ButtonLink text='Checkout' href='/checkout' />
+                
 
                 </Grid.Container>
               
@@ -197,6 +239,7 @@ function NavbarWrapper(params) {
           <Image
                         src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
                         width='50'
+                        alt=''
                         height={'50'}
                       />
           
@@ -234,7 +277,7 @@ function NavbarWrapper(params) {
             </Navbar.Item>
             <Dropdown.Menu
               aria-label="User menu actions"
-              color="secondary"
+              color="warning"
               onAction={(actionKey) => console.log({ actionKey })}
             >
               <Dropdown.Item key="profile" css={{ height: "$18" }}>
@@ -248,12 +291,12 @@ function NavbarWrapper(params) {
               <Dropdown.Item key="settings" withDivider>
                 My Settings
               </Dropdown.Item>
-              <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
+              
               <Dropdown.Item key="analytics" withDivider>
-                Analytics
+                Orders
               </Dropdown.Item>
-              <Dropdown.Item key="system">System</Dropdown.Item>
-              <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
+              
+              
               <Dropdown.Item key="help_and_feedback" withDivider>
                 Help & Feedback
               </Dropdown.Item>

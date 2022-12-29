@@ -41,7 +41,7 @@ function Information(){
         
         <div className="row w-100" >
             <div className="col-12 col-md-7 " >
-            <Text css={{fontSize:"xx-large"}} h1>Contact Information</Text>
+            <Text css={{fontSize:"x-large"}} h1>Contact Information</Text>
             </div>
             <div className="col-12 col-md-5 " css={{display:"flex", justifyContent:"flex-end", alignItems:"end"}}>
             <Text p>Already have an account ? <Link href={'#'}>log in</Link></Text>
@@ -58,7 +58,7 @@ function Information(){
             <Input css={{width:'100%'}} type={'text'} placeholder="Phone number" /> 
             </div>
             <Spacer />
-            <Text h2>Shipping Address</Text>
+            <Text css={{fontSize:"x-large"}} h2>Shipping Address</Text>
             <div className="col-12 mt-1 mb-1">
             <label style={{color:"var(--nextui-colors-text)"}}>Country</label>
             <SelectDesktop data={data} />
@@ -98,11 +98,14 @@ function Information(){
         <Spacer />
         <div className="d-flex justify-content-end">
             
+        <Link href={'/checkout/payment'}>
                 <Button1 text='Continue to Payment' />
+                </Link>
 
         
 
         </div>
+        <Spacer />
         
           
         </Grid>

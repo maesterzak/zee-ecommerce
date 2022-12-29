@@ -3,15 +3,18 @@ import Button2 from "../Buttons/Button2"
 import { LatestProducts } from "../../utils/data"
 import styles from './styles.module.css'
 import Link from "next/link"
+import { storeContext } from "../../components/context/Store";
+import React from 'react';
 
 function CheckoutCart(){
+    const {state, dispatch} = React.useContext(storeContext);
 
     return(
         
         <>
         
         
-        {LatestProducts.map((item, index)=>{
+        {state.cart.content.map((item, index)=>{
             return(
                 <Grid.Container key={index} css={{padding:'20px'}} >
             <Grid xs={'8'}>
@@ -19,25 +22,36 @@ function CheckoutCart(){
                             <Card.Image
                             // src={item}
                             css={{height: "100%"}}
+                            
                             showSkeleton
-                            src={'/images/cap.jpg'}
+                            src={item.image}
                             objectFit="cover"
                             alt="Card example background"
                             maxDelay={10000}>
                             </Card.Image>
                             <Grid css={{position:"absolute", top:'-10px', right:'-10px', borderRadius:'50%', width:'25px',height:'25px', background:'#b59677', display:'flex', 'justifyContent':'center', 'alignItems':'center', color:'White'}}>
-                                    1
+                                    {item.quantity}
                             </Grid>
                         </Card>
                         <Grid css={{padding:'20px'}}>
-                        <Text h3 css={{margin:'0'}} p>New chinoks</Text>
-                        <Text p>Yellow / XS</Text>
+                        <Text h3 css={{margin:'0'}} p>{item.name}</Text>
+                        {Object.values(item.attributes).map((e, index)=>{
+                        return(
+                          
+                          <React.Fragment key={index}>
+                            <Text className='mt-0 mb-0' s>
+                           {e} 
+                          </Text>
+                          </React.Fragment>
+
+                        )
+                      })}
 
                         </Grid>
                         </Grid>
 
                         <Grid className="d-flex justify-content-center align-items-center">
-                            <Text b css={{textAlign:'end'}}>$ 300</Text>
+                            <Text b css={{textAlign:'end'}}>$ {item.price}</Text>
                         </Grid>
 
                         </Grid.Container>

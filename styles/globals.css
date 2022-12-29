@@ -93,7 +93,7 @@ h3{
   background: #1D1F22;
   color: white;
 }
-.main-cart-color-button{
+/* .main-cart-color-button{
   min-width: 30px;
   min-height: 30px;
   border-radius: 50%;
@@ -103,17 +103,78 @@ h3{
   outline: #a39d98 1px solid;
   border: 2px solid whitesmoke;
   
-}
-.main-cart-color-button-active{
+} */
+/* .main-cart-color-button-active{
   transform:scale(1.1, 1.1) ;
   outline: #b59677 1px solid;
   border: 2px solid whitesmoke;
   outline-offset: 1px;
+} */
+
+
+
+
+.attr-div input[type='radio'] {
+  box-sizing: border-box;
+  appearance: none;
+  
+  border: 0.5px #1D1F22 solid;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  
+}
+
+.attr-div input[type='radio']:checked {
+transform:scale(1.1, 1.1) ;
+outline: #b59677 1px solid;
+border: 0.9px solid whitesmoke;
+outline-offset: 1px;
+}
+.attr-div input[type="radio" i]:focus {
+  outline-offset: 2px;
 }
 
 
+.attr-div .attr-label{
+  padding-right: 10px;
+}
+.attr-label{
+  margin-right: 40px;
+  padding: 5px;
+  position: relative;
+  font-family: 'Source Sans Pro';
+  cursor: pointer;
+  
+  
+}
+.attr-label input {
+  display: none;
+  
+}
+.attr-label span {
+  position: absolute;
+  top: 0;
+  border: 2px solid #b59677;
+  /* padding: 5px; */
+  min-width: 30px;
+  text-align: center;
+  height: 30px;
+  line-height: 25px;
+  font-size: 13px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.attr-label input:checked + span {
 
-
+  background: #b59677;
+  
+  color: white;
+}
 
 
 .scrollbar::-webkit-scrollbar{
@@ -124,6 +185,14 @@ h3{
   background: #b59677;
 }
 
+.awssld__content > img{
+  max-height: 100%;
+}
+
+
+.awssld__controls button .awssld__controls__arrow-left, .awssld__controls button .awssld__controls__arrow-right {
+    opacity: 0 !important;
+}
 @media (prefers-color-scheme: linearGradient) {
   html {
     color-scheme: light;

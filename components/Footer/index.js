@@ -3,6 +3,7 @@ import { useMediaQuery } from "../mediaQuery";
 import React from 'react'
 import { faCartShopping, faHeart, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from "next/link";
 
 
 function Footer(params) {
@@ -10,6 +11,21 @@ function Footer(params) {
     const isMd = useMediaQuery(960);
     const Category =[
         "Accessory", "Footware", "Handbag", "Shoes"
+    ]
+    const Information =[
+        {title:'About us', link:'/'},
+        {title:'Contact us', link:'/'},
+        {title:'Terms & Conditions', link:'/'},
+        {title:'Shipping & Delivery', link:'/'},
+        {title:'Return & Exchange', link:'/'},
+        {title:'Privacy Policy', link:'/'},
+    ]
+    const UsefullLinks = [
+        {title:'Store Location', link:'/'},
+        {title:'Latest News', link:'/'},
+        {title:'My Account', link:'/'},
+        {title:'Size Guide', link:'/'},
+        {title:'FAQs', link:'/'},
     ]
 
     return(
@@ -144,10 +160,10 @@ function Footer(params) {
                     </Text>
                     <Spacer />
                     <Text  color="white" >
-                        {Category.map((item, index)=>{
+                        {Information.map((item, index)=>{
                         return(
                             <React.Fragment key={index}>
-                                {item}
+                                <Link href={`${item.link}`}>{item.title}</Link>
                                 <Spacer />
                             </React.Fragment>
                         )}
@@ -165,10 +181,10 @@ function Footer(params) {
                     </Text>
                     <Spacer />
                     <Text  color="white" >
-                        {Category.map((item, index)=>{
+                        {UsefullLinks.map((item, index)=>{
                         return(
                             <React.Fragment key={index}>
-                                {item}
+                                <Link href={`${item.link}`}>{item.title}</Link>
                                 <Spacer />
                             </React.Fragment>
                         )}

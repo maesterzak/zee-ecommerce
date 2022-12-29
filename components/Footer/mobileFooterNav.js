@@ -1,8 +1,7 @@
 import { Text, Grid, Switch, useTheme, Popover, Card, Spacer} from '@nextui-org/react';
 import { useMediaQuery } from "../mediaQuery";
 import { useTheme as useNextTheme } from 'next-themes'
-import { faShoppingBag,faHeartCirclePlus, faSearch, faStore, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { storeContext } from "../../components/context/Store";
 import {MoonIcon} from '../Navbar/MoonIcon'
 import {SunIcon} from '../Navbar/SunIcon'
 import { LatestProducts} from '../../utils/data';
@@ -10,8 +9,11 @@ import styles from './styles.module.css'
 import Button2 from '../Buttons/Button2';
 import Link from 'next/link';
 import Image from 'next/image';
+import React from 'react'
+import ButtonLink from '../Buttons/ButtonLink';
 
 function Mfooter(params) {
+  const {state, dispatch} = React.useContext(storeContext);
     const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
     const isMd = useMediaQuery(960);
@@ -22,6 +24,27 @@ function Mfooter(params) {
         "Our products",
         
       ];
+      const ChangeCart = (action, product)=>{
+              
+        let prod = {
+          
+          name: product.name,
+          price: product.price,
+          slug: product.slug,
+          attributes: product.attributes,
+          quantity: 1
+        }
+        if (action === 'remove') {
+          dispatch({ type: "CART_REMOVE_ITEM", payload: { ...prod } });
+        }
+        else if(action === 'add'){
+          dispatch({ type: "CART_ADD_ITEM", payload: { ...prod } });
+        }
+        else if(action === 'delete'){
+          dispatch({ type: "CART_DELETE_ITEM", payload: { ...prod } });
+        }
+        
+      }
     return(
         <>
         {isMd && 
@@ -57,7 +80,7 @@ function Mfooter(params) {
                 </div>
                 <div className="col-1 position-relative">
                 <div  className='cartAmount'>
-                1
+                {state.cart.amount}
               </div>
               <Popover placement={'top'}>
               <Popover.Trigger >
@@ -69,12 +92,12 @@ function Mfooter(params) {
                         // style={{margin:"0"}}
                       /></Text>
                 </Popover.Trigger>
-                <Popover.Content css={{minHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
+                <Popover.Content css={{maxHeight: "500px", overflowY:"hidden", width:'300px', padding:"20px"}}>
                 <Text h3>Mini-Cart</Text>
-                <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"400px", overflowY:"scroll", overflowX:"hidden"}}>
-                {LatestProducts.map((item, index)=>{
+                <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"300px", overflowY:"scroll", overflowX:"hidden"}}>
+                {state.cart.content.map((item, index)=>{
                   return(
-                    <Grid.Container key={index} css={{height:"auto", width:'70%', }}>
+                    <Grid.Container key={index} css={{height:"auto", width:'100%', }}>
                   <Grid xs={6}>
                   <Card
                                 isHoverable
@@ -87,7 +110,7 @@ function Mfooter(params) {
                             <Card.Image
                             
                             
-                            src={item.images[0]}
+                            src={item.image}
                             // css={{height: isMd ? "90px":"auto"}}
                             showSkeleton
                             
@@ -102,25 +125,47 @@ function Mfooter(params) {
                   </Grid>
                   <Grid direction='column' className='p-1' xs={6}>
                       <Text css={{fontSize:"small", margin:"0"}} h6>{item.name}</Text>
-                      <Text css={{fontSize:"small", margin:"0"}}>Yellow / XS </Text>
+                      
+                      {Object.values(item.attributes).map((e, index)=>{
+                        return(
+                          
+                          <React.Fragment key={index}>
+                            <Text className='mt-0 mb-0' s>
+                           {e} 
+                          </Text>
+                          </React.Fragment>
+
+                        )
+                      })}
+                      
+                   
+                         
                       <Text css={{fontSize:"small", margin:"0"}}>${item.price} </Text>
+                      
                       <Spacer />
-                      <Grid className='d-flex gap-2 align-items-center'>
+                      <Grid className='d-flex gap-1 align-items-center'>
+                        <div style={{width:"20%", cursor:'pointer'}}>
+                        <Image
+                        onClick={()=>ChangeCart('delete', item)}
+                        src={isDark ?  '/svg/trash-dark.svg':'/svg/trash-light.svg'}
+                        width='15'
+                        height={'15'}
                         
-                      <FontAwesomeIcon  size='sm' color='#b59677' icon={faTrash} />
+                        // style={{margin:"0"}}
+                      /></div>
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
-                               <Text css={{
+                               <button style={{height:'100%', border:'none'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' onClick={()=>ChangeCart('remove', item)} css={{
                                  '@hover':{
                                    color:"#b59677"
                                  }
-                               }} b>-</Text>
+                               }} b>-</button>
                           </div>
                           <div className={`${styles.miniCartCount}`}>
-                          <Text b >1</Text>
+                          <button style={{height:'100%', border:'none'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' >{item.quantity}</button>
                           </div>
                           <div className={`${styles.miniCartBtn}`}>
-                          <Text css={{
+                          <Text onClick={()=>ChangeCart('add', item)} css={{
                                  '@hover':{
                                    color:"#b59677"
                                  }
@@ -128,7 +173,6 @@ function Mfooter(params) {
                           </div>
 
                         </div>
-                        
                         
                       </Grid>
                   </Grid>
@@ -140,10 +184,11 @@ function Mfooter(params) {
                 <Text h5>Sub total: $400</Text>
                 <Text p> Taxes, shipping and discounts codes calculated at checkout</Text>
                 <Grid.Container className='d-flex justify-content-between'>
-                  <Link href={'/cart'}><Button2 text='Cart' /></Link><Button2 text='Checkout' />
+                <ButtonLink text='Cart' href='/cart' /><ButtonLink text='Checkout' href='/checkout' />
+                
 
                 </Grid.Container>
-
+              
             </Popover.Content>
                 </Popover>
                 <br/>

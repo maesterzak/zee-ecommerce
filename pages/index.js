@@ -39,11 +39,12 @@ export default function Home() {
           play={true}
           cancelOnInteraction={false} // should stop playing on user interaction
           interval={6000}
+          
         >
           
-              <div data-src="/images/img1.jpg" />
-              <div data-src="/images/img2.jpg" />
-              <div data-src="/images/img3.jpg" />
+              <div  data-src="/images/first.jpg" />
+              <div  data-src="/images/second.jpg" />
+              <div  data-src="/images/third.jpg" />
            
 
           </AutoplaySlider>

@@ -5,13 +5,11 @@ import styles from './styles.module.css'
 import { LatestProducts } from "../../utils/data";
 import React from 'react';
 import ShopCard from "../../components/ShopCard";
-import Button1 from "../../components/Buttons/Button1";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import {useTheme } from '@nextui-org/react'
-
+import { MyStyledButton } from "../../components/Buttons/myStyledButton";
+import { storeContext } from "../../components/context/Store";
 function ProductDetails() {
     const [mainImageIndex, setMainImageIndex] = useState(undefined)
     const isMd = useMediaQuery(960);
@@ -19,8 +17,33 @@ function ProductDetails() {
     const { isDark, type } = useTheme();
    
     const { slug } = router.query
+    const {state, dispatch} = useContext(storeContext);
+
     
     const product = LatestProducts.find(el=> el.slug === slug)
+    
+    const ChangeCart = (e)=>{
+      e.preventDefault();
+    // get data from form
+      var formData = new FormData(e.target);
+      const form_values = Object.fromEntries(formData);
+      
+      
+      console.log("pop", form_values)
+      
+      let prod = {
+        
+        name: product.name,
+        price: product.price,
+        slug: product.slug,
+        image: product.images[0],
+        attributes: form_values,
+        quantity: 1
+      }
+      
+      dispatch({ type: "CART_ADD_ITEM", payload: prod  });
+    }
+
     useEffect(()=>{
       ImageHandler(0)
     }, [slug])
@@ -30,9 +53,10 @@ function ProductDetails() {
     
     return(
         <>
-        <Container css={{paddingTop:"40px", maxWidth:"1504px", margin:0}} fluid>
+        <Container css={{paddingTop:"40px", maxWidth:"1504px", display:'flex', justifyContent:'center'}} fluid>
             <Grid.Container>
-            <Grid  xs={isMd ? 12: 12}>
+
+            <form  onSubmit={ChangeCart}>
                 <Grid.Container >
                     <Grid className={isMd ? `d-flex ${styles.scrollbar}`:`d-grid ${styles.scrollbar}`}  css={{gap:"10px", maxHeight:isMd ? "100px":"500px", overflowY:isMd ? "":"scroll", overflowX:isMd ? "scroll":"", order: isMd ? 1: 0}} xs={isMd ? 12: 1}>
                         <Grid xs={isMd ? 12: ''}  className={`${styles.carouselImagesWrapper}`}>
@@ -102,32 +126,92 @@ function ProductDetails() {
                     <Text>Reviews</Text>
                     <Text p>{product?.description}</Text>
 
-                    <Text>COLOR: BLUE</Text>
-                    <div className=' d-flex'>
-                        {product?.colors.map((item, index)=>{
+                    
+                    <div className=' attr-div d-grid'>
+                        {product?.attributes.map((item, index)=>{
                           return(
+                            <React.Fragment key={index}>
+                              {item.name ==='color' ? 
+                              <>
+                              <Text>{item.name.toLocaleUpperCase()}</Text>
+                              <div className="d-flex gap-2">
+                            {item.value.map((e, index)=>{
+                              return(
+                                <input 
+                            type={'radio'} 
+                            name = {item.name}
+                            key={index} 
+                            style={{background:item.name === 'color' ? `${e}`: ''}}
+                            defaultValue={e}
+                            className={index == 0 ? `mx-1 main-cart-color-button main-cart-color-button-active d-flex justify-content-center align-items-center`:`mx-1 main-cart-color-button d-flex justify-content-center align-items-center`}
+                            defaultChecked={
+                             item.value[0] === e ? "checked" : ""
+                            }
+                            />
+
+                              )
+                            })}
+                            </div>
+
+                              </>
+                              :
+                              <>
+                              <Text className="mt-1">{item.name.toLocaleUpperCase()}</Text>
+                              <div className="d-flex gap-2">
+                                
+                              {item.value.map((e, index)=>{
+                                return(
+                                  
+                                  <label key={index} className="attr-label">
+                              <input
+                                style={{ background: item.value }}
+                                type={"radio"}
+                                name={item.name}
+                                defaultValue={e}
+                                required
+                                defaultChecked={
+                                  item.value[0] === e ? "checked" : ""
+                                }
+
+                                // {item.displayValue}
+                              />
+                              <span>{e}</span>
+                            </label>
+
+                                  
+
+                                )
+                              })}
+                              
+                              </div>
+                              </>
                             
-                            <button key={index} style={{background:`${item}`}} className={index == 0 ? `mx-1 main-cart-color-button main-cart-color-button-active d-flex justify-content-center align-items-center`:`mx-1 main-cart-color-button d-flex justify-content-center align-items-center`}></button>
+                            }
+                              
+                              
+                            
+                            </React.Fragment>
                             
                           )
                         })}
                             
                             </div>
                         <Spacer />
-                    <Text>SIZE: XL</Text>
-                    <div className=' d-flex'>
-                        {product?.sizes.map((item, index)=>{
-                          return(
-                            
-                            <button key={index}  className={index == 0 ? `mx-1 main-cart-size-button main-cart-size-button-active d-flex justify-content-center align-items-center`:`mx-1 main-cart-size-button d-flex justify-content-center align-items-center`}>{item}</button>
-                            
-                          )
-                        })}
-                            
-                            </div>  
+                    
+                    
                         <Spacer />
                         <Grid className="d-flex mx-2 align-items-center gap-2">
-                            <Button1 text={"ADD TO CART"} /> <div className={`${styles.wishList} p-2`}><Image
+                        <MyStyledButton 
+                        
+                          type={'submit'}
+                          // disabled= {params.disabled ?? false}
+                          auto 
+                          css={{height:"50px", width: "40%", fontSize: "auto"}}
+                          size="mysize"
+                          color="mycolor">
+                            ADD TO CART
+                        </MyStyledButton>
+                             <div className={`${styles.wishList} p-2`}><Image
                         src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
                         width='50'
                         height={'50'}
@@ -156,7 +240,7 @@ function ProductDetails() {
                 </Grid.Container>
 
 
-            </Grid>
+            </form>
             <Spacer />
             <Grid className="w-100">
                 <Text h3 className='text-center '>YOU MAY ALSO LIKE</Text>

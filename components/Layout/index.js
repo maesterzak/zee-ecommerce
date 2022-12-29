@@ -11,10 +11,11 @@ export const Layout = ({ children }) => (
 
   <Box
     css={{
-      maxW: "100%"
+      maxW: "100%",
+      maxH:"100%"
     }}
   >
-    <div className='mainBody'>
+    <div className='mainBody '>
       <NavbarWrapper />
 
     {children}

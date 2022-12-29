@@ -4,32 +4,18 @@ import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { Layout } from '../components/Layout';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { Montserrat, Inter, Lato } from '@next/font/google'
-import {useState, createContext} from 'react'
-import dataContext from '../components/context/dataContext';
 import '../styles/globals.css'
-import { useEffect } from "react";
-
+import { useEffect, useContext } from "react";
+import { StoreProvider } from '../components/context/Store';
 const montserrat =Inter()
 function MyApp({ Component, pageProps }) {
-  const [cart, setCart] = useState({cart:[], cartAmount:0})
-  // if(localStorage?.getItem('cart') === null){
-  //   localStorage.setItem('cart', JSON.stringify({"cart":[],"cartAmount":0}))
-    
-  // }
-  // else{
-  //   let localCart = localStorage.getItem('cart')
-  //   const cart = JSON.parse(localCart);
-  //   setCart({cart:cart, cartAmount: cart.length})
-
-  // }
-
-  const data ={
-    cart:cart,
-    setCart:setCart
-  }
+  
   
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
+
+   
+    
   }, []);
   const darkTheme = createTheme({
     type: "dark", // it could be "light" or "dark"
@@ -104,7 +90,7 @@ function MyApp({ Component, pageProps }) {
     }}
   >
     <NextUIProvider>
-      <dataContext.Provider value={data}>
+      <StoreProvider>
       <Layout>
       <style jsx global>{`
         html {
@@ -113,7 +99,7 @@ function MyApp({ Component, pageProps }) {
       `}</style>
   <Component {...pageProps} />
   </Layout>
-  </dataContext.Provider>
+  </StoreProvider>
   </NextUIProvider>
   </NextThemesProvider>
   )

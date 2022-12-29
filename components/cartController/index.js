@@ -1,23 +1,60 @@
 import {isEqual} from "lodash";
 
 const CartController = (
-  param
+  action, param
 ) => {
   //get the current value of cart from localstorage
   const localCart = localStorage.getItem("cart");
   
-  console.log(localCart)
+  console.log('ff',localCart)
   // check if a product with the same attributes and slug exist in cart. Return it's index or return -1 if not found
-  if (localCart != undefined) {
+  
+  if (localCart) {
       //parse the current value of cart
-        // const cartContent = JSON.parse(localCart);
-        // const index = cartContent["cart"].findIndex(
-        //     (item) => isEqual(item.slug, param.slug) && isEqual(item.attributes, param.attributes)
-        //   );
-        //  console.log("oe", index)
+        const cartContent = JSON.parse(localCart);
+        const index = cartContent["content"].findIndex(
+            (item) => isEqual(item.slug, param.slug) && isEqual(item.attributes, param.attributes)
+          );
+         console.log("oe", index)
+         if (index === -1) {
+           cartContent.content.push(param)
+           cartContent.amount += 1
+           localStorage.setItem('cart', JSON.stringify(cartContent)) 
+         }
+         else{
+           if (action === 'add') {
+            console.log("bf", cartContent)
+            console.log("lk", param)
+             cartContent.content[index].quantity += param.quantity
+             cartContent.amount += param.quantity
+             console.log("af", cartContent)
+             localStorage.setItem('cart', JSON.stringify(cartContent)) 
+             
+           }
+           else if (action === 'delete') {
+            cartContent.amount -= cartContent.content.quantity
+              cartContent.content.splice(index, 1)
+              localStorage.setItem('cart', JSON.stringify(cartContent))
+            
+           }
+           else if(action === 'remove'){
+            cartContent.content[index].quantity -= 1
+             cartContent.amount -= 1
+             
+             if (cartContent.amount <= 0) {
+               cartContent.content.splice(index, 1)
+             }
+             localStorage.setItem('cart', JSON.stringify(cartContent))
+
+           }
+         }
+         return cartContent
   }
   else{
-      localStorage.setItem('cart', param)
+    console.log("gg", param)
+    let cart ={content: [param], amount: 1}
+      localStorage.setItem('cart', JSON.stringify(cart))
+      return cart
   }
   
  

@@ -12,7 +12,7 @@
 
 .moreInfoWrapper{
     /* width: 60%; */
-    /* min-height: 200px; */
+    min-height: 200px;
     /* display: none; */
     padding: 15px;
     position: absolute;

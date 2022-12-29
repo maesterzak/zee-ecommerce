@@ -3,69 +3,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Card, Grid, Spacer, Text} from '@nextui-org/react'
 import Link from 'next/link';
 import styles from './styles.module.css';
-import dataContext from '../context/dataContext';
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { LatestProducts } from '../../utils/data';
 import Image from 'next/image';
 import { useTheme } from 'next-themes'
+import React from 'react';
+import { storeContext } from "../../components/context/Store";
 
 
 function ShopCard(params) {
-  const value = useContext(dataContext)
   const { isDark, type } = useTheme();
-  const {cart, setCart} = value
+  const {state, dispatch} = React.useContext(storeContext);
     const {mq, item, cardCount} = params
 
 
-    //stt
-    const CartController = (
-      param
-    ) => {
-      //get the current value of cart from localstorage
-      const localCart = localStorage.getItem("cart");
-      
-      console.log(localCart)
-      // check if a product with the same attributes and slug exist in cart. Return it's index or return -1 if not found
-      if (localCart != undefined) {
-          //parse the current value of cart
-            const cartContent = JSON.parse(localCart);
-            console.log(cartContent)
-            const index = cartContent["cart"].findIndex(
-                (item) => isEqual(item.slug, param.slug) && isEqual(item.attributes, param.attributes)
-              );
-
-             console.log("oe", index)
-      }
-      else{
-        // let CartContent = [{cart:[]}, {cartAmount:0}]
-        // let content = JSON.stringify(param),
-        
-        //   localStorage.setItem('cart', JSON.stringify(param))
-      }
-      
-     
-    };
-
-    //ee
-
-    const addToCart = (e)=>{
+    
+    const ChangeCart = (e)=>{
       e.preventDefault();
     // get data from form
       var formData = new FormData(e.target);
       const form_values = Object.fromEntries(formData);
-
-      let product = LatestProducts.find((el)=>el.slug === form_values.slug)
       
+      let product = LatestProducts.find((el)=>el.slug === form_values.slug)
+      delete form_values.slug;
+      console.log("jg", form_values)
       let prod = {
-        action: "add",
+        
         name: product.name,
         price: product.price,
         slug: product.slug,
-        attributes:{color: "blue", size:"xl"},
-        itemQuantity: 3
+        image: product.images[0],
+        attributes: form_values,
+        quantity: 1
       }
-      CartController(prod)
+      dispatch({ type: "CART_ADD_ITEM", payload: prod  });
       
       
       
@@ -86,7 +58,7 @@ function ShopCard(params) {
                     <Card.Image 
                     
                     
-                    css={{height:"100%"}}
+                    css={{maxHeight:'400px', padding:'5px'}}
                     // css={{"height": mq ? "40vh":"75vh"}}
                   src={item.images[0]}
                 //   width="100%"
@@ -106,25 +78,84 @@ function ShopCard(params) {
                         src={'/svg/heart-active.svg'}
                         width='50'
                         height={'50'}
+                        alt=''
                       />
                   </div>
-                  <form onSubmit={addToCart}>
+                  <form onSubmit={ChangeCart}>
                     <input name='slug' type={'hidden'} value={item.slug} />
-                  <div    className={`${styles.moreInfoWrapper}`}>
+                  <div  className={`${styles.moreInfoWrapper}`}>
 
-                  <Text css={{fontSize:"small"}} span>COLOR: BLUE</Text>
-                    <div className=' d-flex'>
-                        {item?.colors.map((item, index)=>{
+                  <div className=' attr-div d-grid'>
+                        {item?.attributes.map((item, index)=>{
                           return(
+                            <React.Fragment key={index}>
+                              {item.name ==='color' ? 
+                              <>
+                              <Text>{item.name.toLocaleUpperCase()}: BLUE</Text>
+                              <div className="d-flex gap-2">
+                            {item.value.map((e, index)=>{
+                              return(
+                                <input 
+                            type={'radio'} 
+                            name = {item.name}
+                            key={index} 
+                            style={{background:item.name === 'color' ? `${e}`: ''}}
+                            defaultValue={e}
+                            className={index == 0 ? `mx-1 main-cart-color-button main-cart-color-button-active d-flex justify-content-center align-items-center`:`mx-1 main-cart-color-button d-flex justify-content-center align-items-center`}
+                            defaultChecked={
+                             item.value[0] === e ? "checked" : ""
+                            }
+                            />
+
+                              )
+                            })}
+                            </div>
+
+                              </>
+                              :
+                              <>
+                              <Text>{item.name.toLocaleUpperCase()}: BLUE</Text>
+                              <div className="d-flex gap-2">
+                                
+                              {item.value.map((e, index)=>{
+                                return(
+                                  
+                                  <label key={index} className="attr-label">
+                              <input
+                                style={{ background: item.value}}
+                                type={"radio"}
+                                name={item.name}
+                                defaultValue={e}
+                                required
+                                
+                                defaultChecked={
+                                  item.value[0] === e ? "checked" : ""
+                                }
+
+                                // {item.displayValue}
+                              />
+                              <span>{item.value[index]}</span>
+                            </label>
+
+                                  
+
+                                )
+                              })}
+                              
+                              </div>
+                              </>
                             
-                            <button  key={index} style={{background:`${item}`}} className={index == 0 ? `mx-1 main-cart-color-button main-cart-color-button-active d-flex justify-content-center align-items-center`:`mx-1 main-cart-color-button d-flex justify-content-center align-items-center`}></button>
+                            }
+                              
+                              
+                            
+                            </React.Fragment>
                             
                           )
                         })}
                             
                             </div>
-                        <Spacer />
-                            <Text css={{fontSize:"small"}} span>SIZE: XL</Text>
+                            {/* <Text css={{fontSize:"small"}} span>SIZE: XL</Text>
                     <div className=' d-flex'>
                         {item?.sizes.map((item, index)=>{
                           return(
@@ -134,7 +165,7 @@ function ShopCard(params) {
                           )
                         })}
                             
-                            </div>
+                            </div> */}
 
                   </div>
 
@@ -144,6 +175,7 @@ function ShopCard(params) {
                         src={'/svg/cart-light.svg'}
                         width='50'
                         height={'50'}
+                        alt=''
                         // style={{margin:"0"}}
                       />
                       
@@ -157,14 +189,14 @@ function ShopCard(params) {
                     
                     </div>
                   
-                  <Card.Body css={{overflow:'hidden', maxHeight:"90px"}}>
-                    <Text css={{fontSize: mq ? 'small':''}} className='d-flex justify-content-center'>
+                  <Card.Body css={{overflow:'hidden', }}>
+                    <Text css={{fontSize: mq ? '$xs':'medium', margin:0}} className='d-flex justify-content-start'>
                       <Link css={{
                         color:"var(--nextui-colors-text)"
                         }}
-                        href={`/product/${item.slug}`}>{item.name.charAt(0).toUpperCase() + item.name.slice(1).toLowerCase()}</Link>
+                        href={`/product/${item.slug}`}>{item.name.charAt(0).toUpperCase() + item.name.slice(1).toUpperCase()}</Link>
                          </Text>
-                      <Text css={{textAlign:"center",}}>$ {item.price}</Text>
+                      <Text css={{fontSize: mq ? '$xs':'medium'}}>$ {item.price}</Text>
                       
                               
                             {/* <div className='d-flex align-items-center justify-content-center'>
