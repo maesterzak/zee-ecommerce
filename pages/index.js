@@ -12,8 +12,7 @@ import Button1 from '../components/Buttons/Button1';
 import Footer from '../components/Footer';
 import Button2 from '../components/Buttons/Button2';
 const AutoplaySlider = withAutoplay(AwesomeSlider)
-import { faCartShopping, faShoppingBag, faHeart, faHeartbeat, faHeartCirclePlus, faSearch, faStore } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { LatestProducts } from '../utils/data';
 import { Categoryitems } from '../utils/data';
 import { InstagramPics } from '../utils/data';
@@ -52,6 +51,7 @@ export default function Home() {
           
           
           <Container css={{paddingTop:"40px", maxWidth:"1504px", margin:0}} fluid >
+          
           <Grid.Container id='categories' gap={2}>
             {Categoryitems.map((item, index)=>{
               return(
@@ -62,8 +62,14 @@ export default function Home() {
             )}
             
           </Grid.Container>
+         
+          <Spacer />
+          <Spacer />
+          <Spacer />
                 <br />
-          <Text id='latest-products' className='text-center' css={{letterSpacing: isMd ?'3px':'8px'}} h3>LATEST PRODUCTS</Text>
+          <Text b id='latest-products' className='text-center' css={{letterSpacing: isMd ?'3px':'8px'}} h3>LATEST PRODUCTS</Text>
+          <Spacer />
+          
           <Grid.Container  gap={1} >
             {LatestProducts.map((item, index)=>{
               return(
@@ -74,19 +80,21 @@ export default function Home() {
             })}
 
           </Grid.Container>
+          
           <Spacer />
           <div className='d-flex justify-content-center'>
           <Button2 text={"Load more"} />
           </div>
           <Spacer />
-
-          <Text css={{letterSpacing:isMd ?'4px':'8px'}} id="our-products" className='text-center' h3>OUR PRODUCTS</Text>
+          <Spacer />
+          <Spacer />
+          <Text css={{letterSpacing:isMd ?'4px':'8px'}} id="our-products" className='text-center' h3 b>OUR PRODUCTS</Text>
 
           <Grid.Container css={{"display":"flex", "justifyContent":"center", 'gap':"5px"}}>
               <div className='our_products_buttons'>
-              <button className='active_btn btn'>Featured</button>
+              <button className='active_btn btn'>All</button>
               <button className='btn'>Top rated</button>
-              <button className='btn'>Best</button>
+              <button className='btn'>Featured</button>
               </div>
               
             

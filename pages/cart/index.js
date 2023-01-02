@@ -1,18 +1,20 @@
 import { styled, Button, Textarea } from '@nextui-org/react';
-import { Card, Container, Grid, Spacer, Text } from "@nextui-org/react"
+import { Card, Container, Grid, Spacer, Text, Image } from "@nextui-org/react"
 import { useState } from "react"
 import Button2 from "../../components/Buttons/Button2"
 import styles from './styles.module.css'
 import { useRouter } from 'next/router'
 import { storeContext } from "../../components/context/Store";
 import { useContext} from 'react';
-import Image from 'next/image';
 import {useTheme } from '@nextui-org/react'
 import ButtonLink from '../../components/Buttons/ButtonLink'
 import SubTotalCalculator from '../../components/cartController/subTotalCalculator';
-
+import { Zoom } from 'react-reveal';
+import { useMediaQuery } from '../../components/mediaQuery';
 
 function Cart(){
+    const isMd = useMediaQuery(960);
+
     const router = useRouter()
     const { isDark, type } = useTheme();
     const [terms, setTerms] = useState(false)
@@ -51,22 +53,22 @@ function Cart(){
         <Container css={{paddingTop:"40px", maxWidth:"1504px"}} >
             <Grid.Container >
                 <Grid css={{width:"45%"}}>
-                <Text  h4>Product</Text>
+                <Text b css={{fontSize:isMd ? 'medium':'large'}} >Product</Text>
                     <hr />
 
                 </Grid>
-                <Grid css={{width:"20%"}}>
-                <Text className="text-center" h4>Price</Text>
+                <Grid css={{width:"15%"}}>
+                <Text className="text-center" b css={{fontSize:isMd ? 'medium':'large'}}>Price</Text>
                 <hr />
 
                 </Grid>
                 <Grid css={{width:"20%"}}>
-                <Text className="text-center " h4>Quantity</Text>
+                <Text className="text-center " b css={{fontSize:isMd ? 'medium':'large'}}>Quantity</Text>
                 <hr />
 
                 </Grid>
-                <Grid css={{width:"13%"}}>
-                <Text className="text-end" h4>Total</Text>
+                <Grid css={{width:"13%", textAlign:'end'}}>
+                <Text className="text-end" b css={{fontSize:isMd ? 'medium':'large'}}>Total</Text>
                 <hr />
 
                 </Grid>
@@ -75,24 +77,24 @@ function Cart(){
             {state.cart.content.map((item, index)=>{
                 return(
 
-               
+               <Zoom>
             <Grid.Container key={index} css={{marginBottom: "20px"}} direction="row">
                 <Grid css={{width:"45%"}} >
                     
                     <Grid className="d-flex" >
-                        <Card css={{width:"150px", height:"100px"}}>
-                            <Card.Image
+                        <Grid css={{width:"150px", height:"100px"}}>
+                            <Image
                             // src={item}
-                            css={{height: "100%"}}
+                            css={{height: "100px"}}
                             showSkeleton
                             src={item.image}
-                            objectFit="cover"
+                            objectFit="contain"
                             alt="Card example background"
-                            maxDelay={10000}>
-                            </Card.Image>
-                        </Card>
+                            maxDelay={10000}
+                            />
+                        </Grid>
                         <Grid css={{paddingLeft:"10px"}}>
-                            <Text css={{fontSize:"$lg", margin:"0"}}>{item.name}</Text>
+                            <Text css={{fontSize:"$lg", margin:"0"}}>{item.name.toLocaleLowerCase()}</Text>
                             <Text css={{margin:"0"}}>Color: Yellow</Text>
                             <Text css={{margin:"0"}}>Size: XL</Text>
 
@@ -101,15 +103,15 @@ function Cart(){
                     </Grid>
                     
                 </Grid>
-                <Grid css={{width:"20%"}}>
+                <Grid css={{width:"15%"}}>
                 
-                <Grid className="d-flex justify-content-center align-items-center">
+                <Grid className="d-flex  align-items-center">
                     <Text>$ {item.price}</Text>
                 </Grid>
                 </Grid>
                 <Grid css={{width:"20%"}}>
                 
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex  align-items-center">
                 <div className={`${styles.miniCartBtnWrapper} mb-1 `}>
                           <div className={`${styles.miniCartBtn}`}>
                                <Text
@@ -143,6 +145,7 @@ function Cart(){
                 </Grid>
                 
             </Grid.Container>
+            </Zoom>
             
              )
              

@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Card, Grid, Col, Text, Image} from '@nextui-org/react'
-import { faArrowRight, faTextHeight} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-
+import { Zoom } from 'react-reveal';
 
 function CategoryCard(params) {
     const {mq, item} = params
@@ -10,7 +8,9 @@ function CategoryCard(params) {
     return(
         <>
         <Grid  xs={mq ? 12:3}>
+        
             <Link href={`/category/${item.name.toLocaleLowerCase()}`}>
+            <Zoom left cascade>
                 <Card css={{height:'250px'}} variant="flat" isPressable
                 isHoverable >
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
@@ -36,8 +36,9 @@ function CategoryCard(params) {
                   </Card.Image>
 
                 </Card>
+                </Zoom>
                 </Link>
-
+            
             </Grid>
         </>
     )

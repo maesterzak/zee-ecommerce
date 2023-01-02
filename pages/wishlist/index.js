@@ -12,6 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LatestProducts } from '../../utils/data';
 import { storeContext } from '../../components/context/Store';
 import { find } from 'lodash';
+import styles from './styles.module.css'
+import {Image} from '@nextui-org/react';
 
 function WishList(){
     const isMd = useMediaQuery(960);
@@ -21,6 +23,21 @@ function WishList(){
 
     return(
         <>
+        <div className="">
+                <div  className={styles.overlay}>
+                <Text color='white'  h2>{'WISHLIST'}</Text>
+                </div>
+                <div>
+            <Image style={{height:'200px', width:'100vw', }}
+            src={'/images/category-banner.jpg'}
+            objectFit='cover'
+            
+            alt=""
+            />
+            
+            </div>
+            </div>
+            <Spacer />
         <Grid className='d-flex align-items-center justify-content-center' css={{height:"100px", width:"100%", background:"transparent"}}>
             <Text css={{textAlign:"center", marginTop:"$5"}}  h2>View Your Wishlist Products</Text>
         </Grid>

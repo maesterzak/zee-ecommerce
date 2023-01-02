@@ -68,24 +68,24 @@ function NavbarWrapper(params) {
         <Navbar.Brand css={{ mr: "$4" }}>
         
           <AcmeLogo />
-          <Text b color="inherit" css={{ mr: "$11",  }} >
+          <Text b color="inherit" css={{ mr: "$11", fontSize:'x-large', letterSpacing:'5px' }} >
             3PLEZEE
           </Text>
-          <Navbar.Content css={{gap:'15px'}} enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
+          <Navbar.Content css={{gap:'15px', fontSize:'large'}} enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
             {/* <Navbar.Link  isActive > */}
-              <Link  className='d-flex align-items-center' href="/">
-              Shop
+              <Link   className='d-flex align-items-center' href="/">
+              SHOP
               </Link>
               
             {/* </Navbar.Link> */}
             {/* <Navbar.Link > */}
             <Link href={router.asPath ==='/' ? "#categories": "/#categories"} className='d-flex align-items-center'>
-              About Us
+              ABOUT US
               </Link>
               {/* </Navbar.Link> */}
             {/* <Navbar.Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"} > */}
               <Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"}>
-              Contact Us
+              CONTACT US
               </Link>
               {/* </Navbar.Link> */}
             {/* <Navbar.Link href={router.asPath ==='/' ? "#our-products": "/#our-products"} > */}

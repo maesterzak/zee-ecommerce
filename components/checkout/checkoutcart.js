@@ -1,8 +1,5 @@
-import { Card, Container, Grid, Spacer, Text } from "@nextui-org/react"
-import Button2 from "../Buttons/Button2"
-import { LatestProducts } from "../../utils/data"
-import styles from './styles.module.css'
-import Link from "next/link"
+import { Card, Container, Grid, Spacer, Text, Image } from "@nextui-org/react"
+
 import { storeContext } from "../../components/context/Store";
 import React from 'react';
 import { useMediaQuery } from '../mediaQuery/index';
@@ -22,23 +19,23 @@ function CheckoutCart(){
             return(
                 <Grid.Container key={index} css={{padding:isMd ? '0':'20px'}} >
             <Grid xs={'8'}>
-        <Card css={{width:"100px", height:"100px", position:'relative', overflow:'unset'}}>
-                            <Card.Image
+        <div style={{width:"100px", height:"100px", position:'relative', overflow:'unset'}}>
+                            <Image
                             // src={item}
-                            css={{height: "100%"}}
+                            css={{width: "100px"}}
                             
                             showSkeleton
                             src={item.image}
-                            objectFit="cover"
+                            objectFit="contain"
                             alt="Card example background"
-                            maxDelay={10000}>
-                            </Card.Image>
-                            <Grid css={{position:"absolute", top:'-10px', right:'-10px', borderRadius:'50%', width:'25px',height:'25px', background:'#b59677', display:'flex', 'justifyContent':'center', 'alignItems':'center', color:'White'}}>
+                            maxDelay={10000}
+                            />
+                            <div style={{position:"absolute", top:'-10px', right:'-10px', borderRadius:'50%', width:'25px',height:'25px', background:'#b59677', display:'flex', 'justifyContent':'center', 'alignItems':'center', color:'White'}}>
                                     {item.quantity}
-                            </Grid>
-                        </Card>
+                            </div>
+                        </div>
                         <Grid css={{padding:'20px'}}>
-                        <Text h3 css={{margin:'0'}} p>{item.name}</Text>
+                        <Text h3 css={{margin:'0'}} p>{item.name.toLocaleLowerCase()}</Text>
                         {Object.values(item.attributes).map((e, index)=>{
                         return(
                           
@@ -65,7 +62,7 @@ function CheckoutCart(){
         })}
         <Spacer />
         <hr />
-        <Grid.Container>
+        <Grid.Container className="px-3">
             <Grid xs={'6'}>
                 <Text css={{fontSize:'large'}}>Subtotal</Text>
             </Grid>
@@ -74,7 +71,7 @@ function CheckoutCart(){
             </Grid>
         </Grid.Container>
 
-        <Grid.Container>
+        <Grid.Container className="px-3">
             <Grid xs={'6'}>
                 <Text css={{fontSize:'large'}} >Shipping</Text>
             </Grid>
@@ -84,7 +81,7 @@ function CheckoutCart(){
         </Grid.Container>
         
         <hr />
-        <Grid.Container>
+        <Grid.Container className="px-3">
             <Grid xs={'6'}>
                 <Text css={{fontSize:'x-large'}} >Total</Text>
             </Grid>

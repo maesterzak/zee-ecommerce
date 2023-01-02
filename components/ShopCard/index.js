@@ -11,7 +11,8 @@ import { useTheme } from 'next-themes'
 import React from 'react';
 import { storeContext } from "../../components/context/Store";
 import {isEqual, find} from "lodash";
-
+import Pulse from 'react-reveal/Pulse';
+import Zoom from 'react-reveal/Zoom';
 
 function ShopCard(params) {
   const { isDark, type } = useTheme();
@@ -42,17 +43,14 @@ function ShopCard(params) {
       
       
     }
-    const checkWishList=(name, slug)=>{
-      let inWishlist = state.wishlist.content.findIndex(
-        (item) => isEqual(item.slug, slug) && isEqual(item.name, name)
-      );
-      return inWishlist
-    }
+    
     
     
     return(
         <>
+        
         <Grid   xs={mq ? 6:cardCount ?? 3}>
+        <Zoom left>
                 <Card variant={'shadow'}
                 css={{borderRadius:"unset"}}
                 isHoverable
@@ -62,12 +60,14 @@ function ShopCard(params) {
                     <div className='position-relative product-card'>
                       <Link 
                           href={`/product/${item.slug}`}>
+                            <Zoom left>
                     <Card.Image 
                     
                     
                     css={{maxHeight:'400px', padding:'5px'}}
                     // css={{"height": mq ? "40vh":"75vh"}}
                   src={item.images[0]}
+                  
                 //   width="100%"
                   showSkeleton
                   placeholder='/images/img1.jpg'
@@ -77,10 +77,12 @@ function ShopCard(params) {
                   >
                       
                   </Card.Image>
+                  </Zoom>
                   </Link>
                   <div className={styles.wishlist}>
                       
                       {/* <FontAwesomeIcon size='1x' icon={"fa-thin fa-heart"} /> */}
+                      <Pulse spy={state.wishlist.amount}>
                       <Image
                         src={find(state.wishlist.content ,{name:item.name, slug:item.slug}) ? '/svg/heart-active.svg' :'/svg/heart-light.svg'}
                         width='50'
@@ -89,6 +91,7 @@ function ShopCard(params) {
                         alt=''
                         style={{cursor:'pointer'}}
                       />
+                      </Pulse>
                   </div>
                   <form onSubmit={ChangeCart}>
                     <input name='slug' type={'hidden'} value={item.slug} />
@@ -199,13 +202,13 @@ function ShopCard(params) {
                     </div>
                   
                   <Card.Body css={{overflow:'hidden', }}>
-                    <Text css={{fontSize: mq ? '$xs':'medium', margin:0}} className='d-flex justify-content-start'>
-                      <Link css={{
-                        color:"var(--nextui-colors-text)"
+                    <Text css={{fontSize: mq ? '$xs':'large', margin:0, color:'#4d5959'}} b className='d-flex justify-content-start'>
+                      <Link  css={{
+                        color:"#4d5959", 
                         }}
                         href={`/product/${item.slug}`}>{item.name.charAt(0).toUpperCase() + item.name.slice(1).toUpperCase()}</Link>
                          </Text>
-                      <Text css={{fontSize: mq ? '$xs':'medium'}}>$ {item.price}</Text>
+                      <Text b css={{fontSize: mq ? '$xs':'medium', }}>$ {item.price}</Text>
                       
                               
                             {/* <div className='d-flex align-items-center justify-content-center'>
@@ -220,8 +223,9 @@ function ShopCard(params) {
 
 
                 </Card>
-
+                </Zoom>
             </Grid>
+            
         </>
     )
 }

@@ -10,8 +10,11 @@ import Image from "next/image";
 import {useTheme } from '@nextui-org/react'
 import { MyStyledButton } from "../../components/Buttons/myStyledButton";
 import { storeContext } from "../../components/context/Store";
-import {isEqual, find} from "lodash";
-
+import { find} from "lodash";
+import Shake from 'react-reveal/Shake';
+import Slide from 'react-reveal/Slide';
+import Pulse  from "react-reveal/Pulse";
+import HeadShake from 'react-reveal/HeadShake'
 
 function ProductDetails() {
     const [mainImageIndex, setMainImageIndex] = useState(undefined)
@@ -102,6 +105,7 @@ function ProductDetails() {
                         css={{borderRadius:"0", marginBottom:"$5"}}
 
                         >
+                          <Pulse spy={mainImageIndex}>
                             <Card.Image
                             
                             
@@ -113,12 +117,14 @@ function ProductDetails() {
                             alt={product?.name}
                             maxDelay={10000}>
                             </Card.Image>
+                            </Pulse>
 
 
                         </Card>
                         
                     </Grid>
                     <Grid direction="column" css={{paddingLeft:isMd ? "":"30px", order: isMd ? 2: 2, paddingTop: isMd ? "20px":""}} xs={isMd ? 12: 5}>
+                    <Slide right >
                     <Text b css={{fontSize:"18px", color:"$primaryLight"}} h1>{product?.name}</Text>
                     
                     <Text b css={{fontSize:"18px", color:"$primaryLight"}} h1>${product?.price}</Text>
@@ -203,6 +209,7 @@ function ProductDetails() {
                     
                         <Spacer />
                         <Grid className="d-flex mx-2 align-items-center gap-2">
+                        <Shake>
                         <MyStyledButton 
                         
                           type={'submit'}
@@ -213,6 +220,8 @@ function ProductDetails() {
                           color="mycolor">
                             ADD TO CART
                         </MyStyledButton>
+                        </Shake>
+                        <HeadShake spy={state.wishlist.amount}>
                              <div className={`${styles.wishList} p-2`}
                              onClick={()=>dispatch({ type: "WISHLIST_ITEM", payload: {"name": product?.name, "slug": product?.slug}  })}
                              ><Image
@@ -222,6 +231,7 @@ function ProductDetails() {
                         alt=""
 
                       /></div>
+                      </HeadShake>
                         </Grid>
 
                         <Spacer />
@@ -240,7 +250,7 @@ function ProductDetails() {
                      })}</Text>
                         
                     </Grid>         
-
+                    </Slide>
                     </Grid>
                 </Grid.Container>
 

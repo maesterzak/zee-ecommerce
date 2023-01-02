@@ -8,7 +8,13 @@ import { getCountries, getStates } from "country-state-picker"
 import SelectDesktop from "../Select/SelectCountries"
 import {useState} from 'react'
 import SelectState from "../Select/SelectState"
+import { MyStyledButton } from "../Buttons/myStyledButton"
+import { useRouter } from 'next/router'
+
+
+
 function Information(){
+    const router = useRouter()
     let countries = getCountries()
     
     const isMd = useMediaQuery(960);
@@ -35,9 +41,18 @@ function Information(){
         value: value2,
         setValue: setValue2
     }
+
+    const submitHandler =(e)=>{
+        e.preventDefault();
+        var formData = new FormData(e.target);
+
+        const form_values = Object.fromEntries(formData);
+        router.push('/checkout/payment')
+    }
     
     return(
         <Grid direction="column" className="p-0 m-0"   xs={'6'}>
+            <form onSubmit={submitHandler}>
         
         <div className="row w-100" >
             <div className="col-12 col-md-7 " >
@@ -51,11 +66,11 @@ function Information(){
         <div className="row">
             <div className="col-12 mt-1 mb-1">
             <label style={{color:"var(--nextui-colors-text)"}} >Email</label>
-            <Input css={{width:'100%'}} type={'email'} placeholder="Email" /> 
+            <Input name="email" required css={{width:'100%'}} type={'email'} placeholder="Email" /> 
             </div>
             <div className="col-12 mt-1 mb-1">
             <label style={{color:"var(--nextui-colors-text)"}}>Phone Number</label>
-            <Input css={{width:'100%'}} type={'text'} placeholder="Phone number" /> 
+            <Input name="phone_number" required css={{width:'100%'}} type={'text'} placeholder="Phone number" /> 
             </div>
             <Spacer />
             <Text css={{fontSize:"x-large"}} h2>Shipping Address</Text>
@@ -67,21 +82,21 @@ function Information(){
             <div className="col-6">
             <label style={{color:"var(--nextui-colors-text)"}}>First name</label>
             <br />
-            <Input css={{width:'100%'}} type={'text'} placeholder="First name" /> 
+            <Input name="first_name" required css={{width:'100%'}} type={'text'} placeholder="First name" /> 
             </div>
             <div className="col-6">
             <label style={{color:"var(--nextui-colors-text)"}}>Last name</label>
-            <Input css={{width:'100%'}} type={'text'} placeholder="Last name" /> 
+            <Input name="last_name" required css={{width:'100%'}} type={'text'} placeholder="Last name" /> 
             </div>
             <div className="col-12 mt-1 mb-1">
             <label style={{color:"var(--nextui-colors-text)"}}>Address</label>
-            <Input css={{width:'100%'}} type={'text'} placeholder="Address" /> 
+            <Input name="address" required css={{width:'100%'}} type={'text'} placeholder="Address" /> 
             </div>
             
 
             <div className="col-4">
             <label style={{color:"var(--nextui-colors-text)"}}>City</label>
-            <Input css={{width:'100%'}} type={'text'} placeholder="City" /> 
+            <Input name="city" required css={{width:'100%'}} type={'text'} placeholder="City" /> 
             </div>
 
             <div className="col-4">
@@ -91,22 +106,30 @@ function Information(){
 
             <div className="col-4">
             <label style={{color:"var(--nextui-colors-text)"}}>Postal Code</label>
-            <Input css={{width:'100%'}} type={'text'} placeholder="Postal code" /> 
+            <Input name="postal_code" required css={{width:'100%'}} type={'text'} placeholder="Postal code" /> 
             </div>
             
         </div>
         <Spacer />
         <div className="d-flex justify-content-end">
             
-        <Link href={'/checkout/payment'}>
-                <Button1 text='Continue to Payment' />
-                </Link>
+        
+                <MyStyledButton 
+                        
+                          type={'submit'}
+                          // disabled= {params.disabled ?? false}
+                          auto 
+                          css={{height:"50px", width: "40%", fontSize: "auto"}}
+                          size="mysize"
+                          color="mycolor">
+                            Continue to Payment
+                        </MyStyledButton>
 
         
 
         </div>
         <Spacer />
-        
+        </form>
           
         </Grid>
     )

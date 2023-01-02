@@ -1,12 +1,9 @@
 import { Card, Container, Grid, Input, Popover, Spacer, Text, Textarea } from "@nextui-org/react"
 import Button2 from "../../components/Buttons/Button2"
-import { LatestProducts } from "../../utils/data"
-import styles from './styles.module.css'
+
 import Link from "next/link"
 import { useMediaQuery } from "../mediaQuery"
-import SelectDesktop from "../Select/SelectCountries"
-import {useState} from 'react'
-import SelectState from "../Select/SelectState"
+
 function Payment(){
     
     
