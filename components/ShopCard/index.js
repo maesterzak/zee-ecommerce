@@ -28,7 +28,6 @@ function ShopCard(params) {
       
       let product = LatestProducts.find((el)=>el.slug === form_values.slug)
       delete form_values.slug;
-      console.log("jg", form_values)
       let prod = {
         
         name: product.name,

@@ -15,7 +15,6 @@ const CartController = (
         const index = cartContent["content"].findIndex(
             (item) => isEqual(item.slug, param.slug) && isEqual(item.attributes, param.attributes)
           );
-         console.log("oe", index)
          if (index === -1) {
            cartContent.content.push(param)
            cartContent.amount += 1
@@ -23,11 +22,9 @@ const CartController = (
          }
          else{
            if (action === 'add') {
-            console.log("bf", cartContent)
-            console.log("lk", param)
+            
              cartContent.content[index].quantity += param.quantity
              cartContent.amount += param.quantity
-             console.log("af", cartContent)
              localStorage.setItem('cart', JSON.stringify(cartContent)) 
              
            }

@@ -43,7 +43,6 @@ function Cart(){
         var formData = new FormData(e.target);
 
         const form_values = Object.fromEntries(formData);
-        console.log("k", form_values)
         router.push('/checkout')
     }
     return(

@@ -20,7 +20,6 @@ function reducer(state, action) {
   switch (action.type) {
     case "CART_ADD_ITEM": {
       
-        console.log("adding")
         let cartContent = CartController('add', payload)
     
         return { ...state, cart: cartContent };
@@ -37,7 +36,6 @@ function reducer(state, action) {
     }
     case "WISHLIST_ITEM": {
       let wishlistContent = WishListController(payload);
-      console.log(state.wishlist)
       return { ...state, wishlist: wishlistContent };
     
   }

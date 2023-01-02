@@ -16,7 +16,6 @@ const WishListController = (
         const index = cartContent.content.findIndex(
             (item) => isEqual(item.slug, param.slug) && isEqual(item.name, param.name)
           );
-         console.log("oe", index)
          if (index === -1) {
            cartContent.content.push(param)
            cartContent.amount += 1

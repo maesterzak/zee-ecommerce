@@ -6,7 +6,6 @@ function SelectState(params) {
     
     const {name, options, defaultValue, value, setValue} = params.data
     
-    console.log("pp", name, options)
     return(
         <>
         <Popover placement={'bottom'}>

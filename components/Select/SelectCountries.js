@@ -6,7 +6,6 @@ function SelectDesktop(params) {
     
     const {name, options, defaultValue, value, changeCountry} = params.data
     
-    console.log("pp", name, options, defaultValue)
     return(
         <>
         <Popover placement={'bottom'}>

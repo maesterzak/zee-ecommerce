@@ -32,7 +32,6 @@ function ProductDetails() {
       const form_values = Object.fromEntries(formData);
       
       
-      console.log("pop", form_values)
       
       let prod = {
         
@@ -215,9 +214,9 @@ function ProductDetails() {
                             ADD TO CART
                         </MyStyledButton>
                              <div className={`${styles.wishList} p-2`}
-                             onClick={()=>dispatch({ type: "WISHLIST_ITEM", payload: {"name": product.name, "slug": product.slug}  })}
+                             onClick={()=>dispatch({ type: "WISHLIST_ITEM", payload: {"name": product?.name, "slug": product?.slug}  })}
                              ><Image
-                        src={find(state.wishlist.content ,{name:product.name, slug:product.slug}) ? '/svg/heart-active.svg' :'/svg/heart-light.svg'}
+                        src={find(state.wishlist.content ,{name:product?.name, slug:product?.slug}) ? '/svg/heart-active.svg' :'/svg/heart-light.svg'}
                         width='50'
                         height={'50'}
                         alt=""
