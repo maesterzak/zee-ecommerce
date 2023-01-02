@@ -15,6 +15,7 @@ import ButtonLink from '../Buttons/ButtonLink.js';
 import { useRouter } from 'next/router'
 import { storeContext } from "../../components/context/Store";
 import React from 'react'
+import SubTotalCalculator from '../cartController/subTotalCalculator.js';
 
 function NavbarWrapper(params) {
   const router = useRouter()
@@ -24,6 +25,8 @@ function NavbarWrapper(params) {
   const { isDark, type } = useTheme();
   useEffect(()=>{
     dispatch({ type: "SET_CART"});
+    dispatch({ type: "SET_WISHLIST"});
+
   }, [])
     const collapseItems = [
         "Store",
@@ -65,16 +68,31 @@ function NavbarWrapper(params) {
         <Navbar.Brand css={{ mr: "$4" }}>
         
           <AcmeLogo />
-          <Text b color="inherit" css={{ mr: "$11" }} >
+          <Text b color="inherit" css={{ mr: "$11",  }} >
             3PLEZEE
           </Text>
-          <Navbar.Content enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
-            <Navbar.Link isActive href="/">
-              Store
-            </Navbar.Link>
-            <Navbar.Link href={router.asPath ==='/' ? "#categories": "/#categories"}>Categories</Navbar.Link>
-            <Navbar.Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"} >Latest Products</Navbar.Link>
-            <Navbar.Link href={router.asPath ==='/' ? "#our-products": "/#our-products"} >Our Products</Navbar.Link>
+          <Navbar.Content css={{gap:'15px'}} enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
+            {/* <Navbar.Link  isActive > */}
+              <Link  className='d-flex align-items-center' href="/">
+              Shop
+              </Link>
+              
+            {/* </Navbar.Link> */}
+            {/* <Navbar.Link > */}
+            <Link href={router.asPath ==='/' ? "#categories": "/#categories"} className='d-flex align-items-center'>
+              About Us
+              </Link>
+              {/* </Navbar.Link> */}
+            {/* <Navbar.Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"} > */}
+              <Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"}>
+              Contact Us
+              </Link>
+              {/* </Navbar.Link> */}
+            {/* <Navbar.Link href={router.asPath ==='/' ? "#our-products": "/#our-products"} > */}
+              {/* <Link href={router.asPath ==='/' ? "#our-products": "/#our-products"}>
+              Our Products
+              </Link> */}
+              {/* </Navbar.Link> */}
           </Navbar.Content>
         </Navbar.Brand>
         <Navbar.Content
@@ -217,7 +235,7 @@ function NavbarWrapper(params) {
                 })}
                 </Grid.Container>
                 <Spacer />
-                <Text h5>Sub total: $400</Text>
+                <Text h5>Sub total: $ {SubTotalCalculator(state.cart.content)}</Text>
                 <Text p> Taxes, shipping and discounts codes calculated at checkout</Text>
                 <Grid.Container className='d-flex justify-content-between'>
                 <ButtonLink text='Cart' href='/cart' /><ButtonLink text='Checkout' href='/checkout' />
@@ -232,7 +250,7 @@ function NavbarWrapper(params) {
           <Navbar.Item css={isMd ?  {"display":"none"}:{"width":"25px",height:"10px"}}>
             <div className='position-relative w-100 '>
               <div className='cartAmount'>
-                0
+                {state.wishlist.amount}
               </div>
               <Link className={`${styles.link}`} href='/wishlist'>
           {/* <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} /> */}

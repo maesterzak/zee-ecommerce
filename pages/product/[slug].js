@@ -10,6 +10,9 @@ import Image from "next/image";
 import {useTheme } from '@nextui-org/react'
 import { MyStyledButton } from "../../components/Buttons/myStyledButton";
 import { storeContext } from "../../components/context/Store";
+import {isEqual, find} from "lodash";
+
+
 function ProductDetails() {
     const [mainImageIndex, setMainImageIndex] = useState(undefined)
     const isMd = useMediaQuery(960);
@@ -211,11 +214,14 @@ function ProductDetails() {
                           color="mycolor">
                             ADD TO CART
                         </MyStyledButton>
-                             <div className={`${styles.wishList} p-2`}><Image
-                        src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
+                             <div className={`${styles.wishList} p-2`}
+                             onClick={()=>dispatch({ type: "WISHLIST_ITEM", payload: {"name": product.name, "slug": product.slug}  })}
+                             ><Image
+                        src={find(state.wishlist.content ,{name:product.name, slug:product.slug}) ? '/svg/heart-active.svg' :'/svg/heart-light.svg'}
                         width='50'
                         height={'50'}
                         alt=""
+
                       /></div>
                         </Grid>
 

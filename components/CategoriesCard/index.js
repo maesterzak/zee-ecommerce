@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Card, Grid, Col, Text, Image} from '@nextui-org/react'
 import { faArrowRight, faTextHeight} from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 
 function CategoryCard(params) {
@@ -8,9 +9,10 @@ function CategoryCard(params) {
     
     return(
         <>
-        <Grid xs={mq ? 12:6}>
-                <Card variant="flat" isPressable
-                isHoverable css={{}}>
+        <Grid  xs={mq ? 12:3}>
+            <Link href={`/category/${item.name.toLocaleLowerCase()}`}>
+                <Card css={{height:'250px'}} variant="flat" isPressable
+                isHoverable >
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col>
                     
@@ -26,7 +28,7 @@ function CategoryCard(params) {
                   src={item.image}
                   width="100%"
                   height="100%"
-                  objectFit="cover"
+                  objectFit="fill"
                   alt="Card example background"
                   showSkeleton
                   maxDelay={10000}
@@ -34,6 +36,7 @@ function CategoryCard(params) {
                   </Card.Image>
 
                 </Card>
+                </Link>
 
             </Grid>
         </>

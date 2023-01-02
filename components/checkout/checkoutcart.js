@@ -5,9 +5,13 @@ import styles from './styles.module.css'
 import Link from "next/link"
 import { storeContext } from "../../components/context/Store";
 import React from 'react';
+import { useMediaQuery } from '../mediaQuery/index';
+import SubTotalCalculator from "../cartController/subTotalCalculator"
+
 
 function CheckoutCart(){
     const {state, dispatch} = React.useContext(storeContext);
+    const isMd = useMediaQuery(960);
 
     return(
         
@@ -16,7 +20,7 @@ function CheckoutCart(){
         
         {state.cart.content.map((item, index)=>{
             return(
-                <Grid.Container key={index} css={{padding:'20px'}} >
+                <Grid.Container key={index} css={{padding:isMd ? '0':'20px'}} >
             <Grid xs={'8'}>
         <Card css={{width:"100px", height:"100px", position:'relative', overflow:'unset'}}>
                             <Card.Image
@@ -66,7 +70,7 @@ function CheckoutCart(){
                 <Text css={{fontSize:'large'}}>Subtotal</Text>
             </Grid>
             <Grid css={{display:'flex', justifyContent:'flex-end'}} xs={'6'}>
-                <Text css={{fontSize:'large'}} b>$ 300</Text>
+                <Text css={{fontSize:'large'}} b>$ {SubTotalCalculator(state.cart.content)}</Text>
             </Grid>
         </Grid.Container>
 
@@ -75,7 +79,7 @@ function CheckoutCart(){
                 <Text css={{fontSize:'large'}} >Shipping</Text>
             </Grid>
             <Grid css={{display:'flex', justifyContent:'flex-end'}} xs={'6'}>
-                <Text css={{fontSize:'large'}} b>$ 300</Text>
+                <Text css={{fontSize:'large'}} b>$ 20</Text>
             </Grid>
         </Grid.Container>
         
@@ -85,7 +89,7 @@ function CheckoutCart(){
                 <Text css={{fontSize:'x-large'}} >Total</Text>
             </Grid>
             <Grid css={{display:'flex', justifyContent:'flex-end'}} xs={'6'}>
-                <Text css={{fontSize:'x-large'}} b>$ 300</Text>
+                <Text css={{fontSize:'x-large'}} b>$ {SubTotalCalculator(state.cart.content) + 20}</Text>
             </Grid>
         </Grid.Container>
         </>

@@ -9,6 +9,7 @@ import { useContext} from 'react';
 import Image from 'next/image';
 import {useTheme } from '@nextui-org/react'
 import ButtonLink from '../../components/Buttons/ButtonLink'
+import SubTotalCalculator from '../../components/cartController/subTotalCalculator';
 
 
 function Cart(){
@@ -138,7 +139,7 @@ function Cart(){
                 <Grid css={{width:"13%"}}>
                 
                 <Grid className="d-flex justify-content-end align-items-center">
-                    <Text>$300</Text>
+                    <Text>${item.price * item.quantity}</Text>
                 </Grid>
                 </Grid>
                 
@@ -158,7 +159,7 @@ function Cart(){
                     </Textarea>
                 </Grid>
                 <Grid className="d-grid justify-content-end">
-                    <Text css={{fontSize:"x-large"}} b span>SUBTOTAL: <Text span>$70.00</Text></Text>
+                    <Text css={{fontSize:"x-large"}} b span>SUBTOTAL: <Text span>$ {SubTotalCalculator(state.cart.content)}</Text></Text>
                     <Spacer />
                     <Text>Taxes, shipping and discounts codes calculated at checkout</Text>
                     

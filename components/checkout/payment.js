@@ -26,49 +26,34 @@ function Payment(){
             
         </div>
 
-        <Grid.Container direction="column"   css={{border:'2px solid var(--nextui-colors-text)', padding:'10px', borderRadius:'10px'}}>
-            <Grid xs='12' direction="row" >
-            <Grid  xs={3} >
+        <Grid.Container direction="row"   css={{border:'2px solid var(--nextui-colors-text)', padding:'10px', borderRadius:'10px'}}>
+
+
+            
+            <Grid xs={4} direction="column">
             <Text  >Email</Text>
-            </Grid>
-            <Grid xs={9}  css={{display:"flex", justifyContent:"flex-start"}}>
-            <Text b p>abubakarzakari1703@gmail.com</Text>
-            </Grid>
-            </Grid>
-
-            <Grid xs='12' className="gap-5"  direction="row" >
-            
             <Text  >Phone Number</Text>
-            
-            
-            <Text >+2348062257480</Text>
-            
-            </Grid>
-
-            <Grid xs='12 ' className="gap-5"  direction="row" >
-            
             <Text  >Name</Text>
-            
-            
-            <Text >Abubakar Zakari</Text>
-            
-            </Grid>
-
-            <Grid xs='12' className="gap-5"  direction="row" >
-            
             <Text  >Ship to</Text>
-            
-            <Text>Housing estate Abuja</Text>
-            
-            </Grid>
+            <Text >Total</Text>
 
-            <Grid xs='12'   direction="row" >
+                </Grid>
+                <Grid xs={8} direction="column" >
+                <Text >abubakarzakari1703@gmail.com</Text>
+                <Text >+2348062257480</Text>
+                <Text >Abubakar Zakari</Text>
+                <Text>Housing estate Abuja</Text>
+                <Text >$ 300</Text>
+
+                </Grid>
             
-            <Text css={{width:'200px'}}>Total</Text>
             
-            <Text >$ 300</Text>
             
-            </Grid>
+            
+            
+            
+            
+            
         </Grid.Container>
         
         

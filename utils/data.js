@@ -461,5 +461,5 @@ export  const LatestProducts = [
   ]
 export  const Categoryitems = [
     {"name": "ACCESSORIES", "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/files/acessories_1728x.jpg?v=1613575958"},{"name":"CLOTHING", "image":"	https://cdn.shopify.com/s/files/1/0437/1913/1293/files/clothing_1728x.jpg?v=1613575958",},
-    {"name": "FOOTWARE", "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/files/footerwear_1728x.jpg?v=1613575958"}, {"name": "HANDBAG", "image":"	https://cdn.shopify.com/s/files/1/0437/1913/1293/files/handbag_1728x.jpg?v=1613575959"}
+     {"name": "HANDBAG", "image":"	https://cdn.shopify.com/s/files/1/0437/1913/1293/files/handbag_1728x.jpg?v=1613575959"}, {"name": "FOOTWARE", "image":"https://cdn.shopify.com/s/files/1/0437/1913/1293/files/footerwear_1728x.jpg?v=1613575958"},
   ]

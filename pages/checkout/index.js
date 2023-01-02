@@ -15,7 +15,7 @@ function Checkout(){
             <Grid xs={'6'}>
             <Information />
             </Grid>
-            <Grid className="p-4" direction="column" xs={'6'}>
+            <Grid direction="column" xs={'6'}>
                 <CheckoutCart />
             </Grid>
         </Grid.Container>

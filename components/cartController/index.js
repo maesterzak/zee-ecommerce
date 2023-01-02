@@ -6,7 +6,7 @@ const CartController = (
   //get the current value of cart from localstorage
   const localCart = localStorage.getItem("cart");
   
-  console.log('ff',localCart)
+  
   // check if a product with the same attributes and slug exist in cart. Return it's index or return -1 if not found
   
   if (localCart) {
@@ -32,7 +32,7 @@ const CartController = (
              
            }
            else if (action === 'delete') {
-            cartContent.amount -= cartContent.content.quantity
+            cartContent.amount -= cartContent.content[index].quantity
               cartContent.content.splice(index, 1)
               localStorage.setItem('cart', JSON.stringify(cartContent))
             
@@ -41,7 +41,7 @@ const CartController = (
             cartContent.content[index].quantity -= 1
              cartContent.amount -= 1
              
-             if (cartContent.amount <= 0) {
+             if (cartContent.content[index].quantity <= 0) {
                cartContent.content.splice(index, 1)
              }
              localStorage.setItem('cart', JSON.stringify(cartContent))
@@ -51,7 +51,6 @@ const CartController = (
          return cartContent
   }
   else{
-    console.log("gg", param)
     let cart ={content: [param], amount: 1}
       localStorage.setItem('cart', JSON.stringify(cart))
       return cart

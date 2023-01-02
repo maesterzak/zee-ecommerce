@@ -5,16 +5,19 @@ import withAutoplay from 'react-awesome-slider/dist/autoplay'
 import 'react-awesome-slider/dist/styles.css'
 import { useMediaQuery } from '../../components/mediaQuery';
 import ShopCard from '../../components/ShopCard';
-import React from 'react'
+import React, {useContext} from 'react'
 import Button1 from '../../components/Buttons/Button1';
 import { faCartShopping, faShoppingBag, faHeart, faHeartbeat, faHeartCirclePlus, faSearch, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LatestProducts } from '../../utils/data';
-
+import { storeContext } from '../../components/context/Store';
+import { find } from 'lodash';
 
 function WishList(){
     const isMd = useMediaQuery(960);
   const { theme } = useTheme();
+  const {state, dispatch} = useContext(storeContext);
+    const data = LatestProducts.filter((e)=> find(state.wishlist.content ,{name:e.name, slug:e.slug}))
 
     return(
         <>
@@ -24,7 +27,7 @@ function WishList(){
 
         <Container css={{paddingTop:"0px", maxWidth:"1504px", margin:0}} fluid >
         <Grid.Container  gap={1} >
-            {LatestProducts.map((item, index)=>{
+            {data?.map((item, index)=>{
               return(
                 <React.Fragment key={index}>
                   <ShopCard mq={isMd} item={item} cardCount={3} />
@@ -34,7 +37,7 @@ function WishList(){
 
           </Grid.Container>
         </Container>
-        
+        <Spacer />
         </>
     )
 }

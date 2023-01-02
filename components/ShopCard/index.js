@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes'
 import React from 'react';
 import { storeContext } from "../../components/context/Store";
+import {isEqual, find} from "lodash";
 
 
 function ShopCard(params) {
@@ -42,6 +43,13 @@ function ShopCard(params) {
       
       
     }
+    const checkWishList=(name, slug)=>{
+      let inWishlist = state.wishlist.content.findIndex(
+        (item) => isEqual(item.slug, slug) && isEqual(item.name, name)
+      );
+      return inWishlist
+    }
+    
     
     return(
         <>
@@ -75,10 +83,12 @@ function ShopCard(params) {
                       
                       {/* <FontAwesomeIcon size='1x' icon={"fa-thin fa-heart"} /> */}
                       <Image
-                        src={'/svg/heart-active.svg'}
+                        src={find(state.wishlist.content ,{name:item.name, slug:item.slug}) ? '/svg/heart-active.svg' :'/svg/heart-light.svg'}
                         width='50'
+                        onClick={()=>dispatch({ type: "WISHLIST_ITEM", payload: {"name": item.name, "slug": item.slug}  })}
                         height={'50'}
                         alt=''
+                        style={{cursor:'pointer'}}
                       />
                   </div>
                   <form onSubmit={ChangeCart}>

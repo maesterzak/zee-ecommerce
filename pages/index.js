@@ -42,7 +42,7 @@ export default function Home() {
           
         >
           
-              <div  data-src="/images/first.jpg" />
+              <div  data-src="/images/category-banner.jpg" />
               <div  data-src="/images/second.jpg" />
               <div  data-src="/images/third.jpg" />
            
@@ -63,7 +63,7 @@ export default function Home() {
             
           </Grid.Container>
                 <br />
-          <Text id='latest-products' className='text-center' h3>LATEST PRODUCTS</Text>
+          <Text id='latest-products' className='text-center' css={{letterSpacing: isMd ?'3px':'8px'}} h3>LATEST PRODUCTS</Text>
           <Grid.Container  gap={1} >
             {LatestProducts.map((item, index)=>{
               return(
@@ -80,9 +80,9 @@ export default function Home() {
           </div>
           <Spacer />
 
-          <Text id="our-products" className='text-center' h3>OUR PRODUCTS</Text>
+          <Text css={{letterSpacing:isMd ?'4px':'8px'}} id="our-products" className='text-center' h3>OUR PRODUCTS</Text>
 
-          <Grid.Container css={{"display":"flex", "justifyContent":"center", 'gap':"10px"}}>
+          <Grid.Container css={{"display":"flex", "justifyContent":"center", 'gap':"5px"}}>
               <div className='our_products_buttons'>
               <button className='active_btn btn'>Featured</button>
               <button className='btn'>Top rated</button>
@@ -110,7 +110,7 @@ export default function Home() {
 
           
           </Container>
-          <Text h3>@ FOLLOW US ON INSTAGRAM</Text>
+          <Text css={{letterSpacing:isMd ?'1px':'8px'}} h3>@ FOLLOW US ON INSTAGRAM</Text>
           <Spacer />
           <Grid.Container>
             
@@ -149,16 +149,17 @@ export default function Home() {
                   >
                   </Card.Image>
 
-                  <Card css={{ position: "absolute", width: isMd ? "80%":"40%", background:"rgba(181, 150, 119, 0.8)", textAlign:'center'}}>
-                <Col>
-                    <Text h3 weight="bold" color='#ffffff' transform="uppercase">
+                  <Card className='p-4' css={{ position: "absolute", width: isMd ? "80%":"70%",height:"300px" , background:"rgba(181, 150, 119, 0.8)", textAlign:'center'}}>
+                <Col css={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+                    <Text css={{fontSize:'x-large', letterSpacing:'15px', padding:0}} weight="bold" color='#ffffff' transform="uppercase">
                     3PLEZEE 
                     </Text>
-                    <Text color='#ffffff' >
+                    <Text className='m-0 p-0' css={{fontSize:'large'}} color='#ffffff' >
                       200 unit housing estate lokoja, kogi state.
                     </Text>
-                    <Spacer />
-                    <Text h5 color='#ffffff'>
+                    
+                    <Text className='m-0 p-0' css={{fontSize:'x-large'}} color='white'>_______________</Text>
+                    <Text b className='m-0 p-0' color='#ffffff'>
                       Opening Hours
                     </Text>
                     <Text color='#ffffff'>

@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import CartController from "../cartController";
 import Cookies from 'universal-cookie';
+import WishListController from "../cartController/wishListController";
  
 const cookies = new Cookies();
 export const storeContext = createContext();
@@ -9,7 +10,8 @@ const initialState = {
 //   cart: typeof window !== "undefined" ? localStorage.getItem('cart')
 //     ? JSON.parse(localStorage?.getItem("cart"))
 //     : { content: [], amount: 0 } : { content: [], amount: 0 },
-cart :  { content: [], amount: 0 }
+cart :  { content: [], amount: 0 },
+wishlist :  { content: [], amount: 0 },
 
 
 };
@@ -33,12 +35,24 @@ function reducer(state, action) {
         return { ...state, cart: cartContent };
       
     }
+    case "WISHLIST_ITEM": {
+      let wishlistContent = WishListController(payload);
+      console.log(state.wishlist)
+      return { ...state, wishlist: wishlistContent };
+    
+  }
     case "SET_CART": {
         // let cartContent = CartController('delete', payload);
         let cartContent = JSON.parse(localStorage?.getItem("cart")) ?? { content: [], amount: 0 }
         return { ...state, cart: cartContent };
       
     }
+    case "SET_WISHLIST": {
+      // let cartContent = CartController('delete', payload);
+      let wishlist = JSON.parse(localStorage?.getItem("wishlist")) ?? { content: [], amount: 0 }
+      return { ...state, wishlist: wishlist };
+    
+  }
     case "SAVE_SHIPPINIG_ADDRESS": {
       return {
         ...state,
@@ -68,6 +82,5 @@ function reducer(state, action) {
 export function StoreProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const value = { state, dispatch };
-  console.log("pl", state)
   return <storeContext.Provider value={value}>{children}</storeContext.Provider>;
 }
