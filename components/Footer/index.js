@@ -145,17 +145,21 @@ function Footer(params) {
           <div>
                    
                     <Spacer />
-                    <Text  color="white" >
-                        {Category.map((item, index)=>{
-                        return(
-                            <React.Fragment key={index}>
-                                {item}
-                                <Spacer />
-                            </React.Fragment>
-                        )}
-                        )}
-                        
-                    </Text>
+                    <Grid>
+          <Input
+            clearable
+            // css={{height:'90px'}}
+            height='100px'
+            contentRightStyling={false}
+            placeholder="Enter email..."
+            contentRight={
+            //   <SendButton>
+            //     <SendIcon />
+            //   </SendButton>
+            <Button1 text='Subscribe' />
+            }
+          />
+        </Grid>
 
                 </div>
           </Collapse>
