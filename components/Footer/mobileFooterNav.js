@@ -4,7 +4,7 @@ import { useTheme as useNextTheme } from 'next-themes'
 import { storeContext } from "../../components/context/Store";
 import {MoonIcon} from '../Navbar/MoonIcon'
 import {SunIcon} from '../Navbar/SunIcon'
-import { LatestProducts} from '../../utils/data';
+import SubTotalCalculator from '../cartController/subTotalCalculator';
 import styles from './styles.module.css'
 import Button2 from '../Buttons/Button2';
 import Link from 'next/link';
@@ -64,7 +64,7 @@ function Mfooter(params) {
                 </div>
                 <div className="col-1 position-relative">
                 <div  className='cartAmount'>
-                1
+                {state.wishlist.amount}
               </div>
               
                 <Text><Link  className={`${styles.link}`} href='/wishlist'><Image
@@ -150,26 +150,23 @@ function Mfooter(params) {
                         src={isDark ?  '/svg/trash-dark.svg':'/svg/trash-light.svg'}
                         width='15'
                         height={'15'}
+                        alt=''
                         
                         // style={{margin:"0"}}
                       /></div>
                         <div className={`${styles.miniCartBtnWrapper} mb-1`}>
                           <div className={`${styles.miniCartBtn}`}>
-                               <button style={{height:'100%', border:'none'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' onClick={()=>ChangeCart('remove', item)} css={{
-                                 '@hover':{
-                                   color:"#b59677"
-                                 }
-                               }} b>-</button>
+                               <button style={{height:'100%', border:'none', color:"#b59677", fontWeight:'bolder', fontSize:'30px'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' onClick={()=>ChangeCart('remove', item)} 
+                                 
+                                >-</button>
                           </div>
                           <div className={`${styles.miniCartCount}`}>
-                          <button style={{height:'100%', border:'none'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' >{item.quantity}</button>
+                          <button style={{height:'100%', border:'none', color:"#b59677", fontSize:'20px'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' >{item.quantity}</button>
                           </div>
                           <div className={`${styles.miniCartBtn}`}>
-                          <Text onClick={()=>ChangeCart('add', item)} css={{
-                                 '@hover':{
-                                   color:"#b59677"
-                                 }
-                               }} b>+</Text>
+                          <button style={{height:'100%', border:'none', color:"#b59677", fontWeight:'bolder', fontSize:'25px'}} disabled={item.quantity <= 0 ? true:false} className='btn d-flex align-items-center' onClick={()=>ChangeCart('add', item)} 
+                                 
+                                 >+</button>
                           </div>
 
                         </div>
@@ -181,7 +178,7 @@ function Mfooter(params) {
                 })}
                 </Grid.Container>
                 <Spacer />
-                <Text h5>Sub total: $400</Text>
+                <Text h5>Sub total: $ {SubTotalCalculator(state.cart.content)}</Text>
                 <Text p> Taxes, shipping and discounts codes calculated at checkout</Text>
                 <Grid.Container className='d-flex justify-content-between'>
                 <ButtonLink text='Cart' href='/cart' /><ButtonLink text='Checkout' href='/checkout' />
