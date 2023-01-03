@@ -313,7 +313,7 @@ function ProductDetails() {
               type={'submit'}
               // disabled= {params.disabled ?? false}
               auto 
-              css={{height:"40px", width: "40%", fontSize: "large"}}
+              css={{height:"40px", width: "40%", fontSize: "medium"}}
               size="mysize"
               color="mycolor">
                 Add Review

@@ -201,7 +201,7 @@ function ShopCard(params) {
                     </div>
                   
                   <Card.Body css={{overflow:'hidden', }}>
-                    <Text css={{fontSize: mq ? '$xs':'large', margin:0, }} b className='d-flex justify-content-start'>
+                    <Text css={{fontSize: mq ? '$xs':'medium', margin:0, }}  className='d-flex justify-content-start'>
                       <Link  css={{
                         color:"#4d5959", 
                         }}

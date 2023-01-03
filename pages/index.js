@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { useTheme, Text, Grid, Spacer, Card, Col, Row,Button,  Container, Image} from '@nextui-org/react';
+import { useTheme, Text, Grid, Spacer, Card, Col, Input,  Container, Textarea} from '@nextui-org/react';
 import AwesomeSlider from 'react-awesome-slider'
 import withAutoplay from 'react-awesome-slider/dist/autoplay'
 import 'react-awesome-slider/dist/styles.css'
@@ -8,10 +8,13 @@ import { useMediaQuery } from '../components/mediaQuery';
 import ShopCard from '../components/ShopCard';
 import CategoryCard from '../components/CategoriesCard';
 import React, {useState} from 'react'
+import Image from 'next/image';
 import Button1 from '../components/Buttons/Button1';
 import Footer from '../components/Footer';
 import Button2 from '../components/Buttons/Button2';
+import { MyStyledButton } from '../components/Buttons/myStyledButton';
 const AutoplaySlider = withAutoplay(AwesomeSlider)
+
 
 import { LatestProducts } from '../utils/data';
 import { Categoryitems } from '../utils/data';
@@ -208,6 +211,106 @@ export default function Home() {
 
 
 
+          </Grid.Container>
+
+          <Grid.Container className='p-4'>
+            <Grid className='p-3' direction='column' xs={isMd ? 12 : 6}>
+              <Text h4>DROP US A LINE</Text>
+
+              <div className="row">
+            <div className="col-12 mt-1 mb-1">
+            <label style={{color:"var(--nextui-colors-text)"}} >Name</label>
+            <Input name="name" required css={{width:'100%'}} type={'text'} placeholder="Name" /> 
+            </div>
+
+            <div className="col-12 mt-1 mb-1">
+            <label style={{color:"var(--nextui-colors-text)"}} >Email</label>
+            <Input name="email" required css={{width:'100%'}} type={'email'} placeholder="Email" /> 
+            </div>
+
+            <div className="col-12 mt-1 mb-1">
+            <label style={{color:"var(--nextui-colors-text)"}} >Phone Number</label>
+            <Input name="phone_number" required css={{width:'100%'}} type={'text'} placeholder="Phone Number " /> 
+            </div>
+
+            <div className="col-12 mt-1 mb-1 d-grid">
+            <label style={{color:"var(--nextui-colors-text)"}} >Message</label>
+            <Textarea name='message' >
+              </Textarea>    
+            <Spacer />
+              <MyStyledButton 
+                        
+                          type={'submit'}
+                          // disabled= {params.disabled ?? false}
+                          auto 
+                          css={{height:"30px", width: "100%", fontSize: "auto"}}
+                          size="mysize"
+                          color="mycolor">
+                            SEND
+                        </MyStyledButton>
+</div>
+
+            </div>
+
+
+            </Grid>
+            <Grid className='p-3' direction='column' xs={isMd ? 12 : 6}>
+              <Text h4>CONTACT INFORMATION</Text>
+              <Text p>We love to hear from you on our customer service, merchandise, website or any topics you want to share with us. Your comments and suggestions 
+                will be appreciated. Please complete the form below.</Text>
+
+                <Spacer />
+                    <div className="d-flex gap-2 align-item-center">
+                        <div className='b-danger'>
+                    <Image
+                        src='/svg/map-light.svg'
+                        width='50'
+                        alt=''
+                        height={'50'}
+                      /></div>
+                      <Text > 184 Main Rd E, St Albans Victoria 3021, Australia</Text>
+                    </div>
+
+                    <Spacer />
+                    <div className="d-flex gap-2 align-item-center">
+                        <div >
+                    <Image
+                        src='/svg/phone-light.svg'
+                        width={'50'}
+                        alt=''
+                        height={'40'}
+                      /></div>
+                      <Text > 1800-123-222 / 1900-1570-230</Text>
+                    </div>
+
+                    <Spacer />
+                    <div className="d-flex gap-2 align-item-center">
+                        <div >
+                    <Image
+                        src='/svg/email-light.svg'
+                        width='40'
+                        alt=''
+                        height={'40'}
+                      /></div>
+                      <Text > contact@company.com</Text>
+                    </div>
+
+                    <Spacer />
+                    <div className="d-flex gap-2 align-item-center">
+                        <div >
+                    <Image
+                        src='/svg/clock.svg'
+                        width='40'
+                        alt=''
+                        height={'40'}
+                      /></div>
+                      <Text >  Everyday 9:00-17:00</Text>
+                    </div>
+
+                    
+
+
+            </Grid>
           </Grid.Container>
 
 

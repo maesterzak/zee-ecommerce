@@ -69,10 +69,10 @@ function NavbarWrapper(params) {
         <Navbar.Brand css={{ mr: "$4" }}>
         
           <AcmeLogo />
-          <Text b color="inherit" css={{ mr: "$11", fontSize:'x-large', letterSpacing:'5px' }} >
+          <Text b color="inherit" css={{ mr: "$11", fontSize:'large', letterSpacing:'5px' }} >
             3PLEZEE
           </Text>
-          <Navbar.Content css={{gap:'15px', fontSize:'large'}} enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
+          <Navbar.Content css={{gap:'15px', fontSize:'medium'}} enableCursorHighlight hideIn="xs" activeColor={"warning"} variant="highlight">
             {/* <Navbar.Link  isActive > */}
               <Link   className='d-flex align-items-center' href="/">
               SHOP
