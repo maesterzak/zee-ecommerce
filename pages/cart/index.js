@@ -9,7 +9,7 @@ import { useContext} from 'react';
 import {useTheme } from '@nextui-org/react'
 import ButtonLink from '../../components/Buttons/ButtonLink'
 import SubTotalCalculator from '../../components/cartController/subTotalCalculator';
-import { Zoom } from 'react-reveal';
+import {Zoom} from "react-awesome-reveal";
 import { useMediaQuery } from '../../components/mediaQuery';
 
 function Cart(){
@@ -77,7 +77,7 @@ function Cart(){
             {state.cart.content.map((item, index)=>{
                 return(
 
-               <Zoom>
+               <Zoom triggerOnce>
             <Grid.Container key={index} css={{marginBottom: "20px"}} direction="row">
                 <Grid css={{width:"45%"}} >
                     

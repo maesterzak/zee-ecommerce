@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { useTheme, Text, Grid, Spacer, Card, Col, Row,Button,  Container} from '@nextui-org/react';
+import { useTheme, Text, Grid, Spacer, Card, Col, Row,Button,  Container, Image} from '@nextui-org/react';
 import AwesomeSlider from 'react-awesome-slider'
 import withAutoplay from 'react-awesome-slider/dist/autoplay'
 import 'react-awesome-slider/dist/styles.css'
 import { useMediaQuery } from '../components/mediaQuery';
 import ShopCard from '../components/ShopCard';
 import CategoryCard from '../components/CategoriesCard';
-import React from 'react'
+import React, {useState} from 'react'
 import Button1 from '../components/Buttons/Button1';
 import Footer from '../components/Footer';
 import Button2 from '../components/Buttons/Button2';
@@ -18,6 +18,8 @@ import { Categoryitems } from '../utils/data';
 import { InstagramPics } from '../utils/data';
 
 export default function Home() {
+  const [latestPFilter, setLatestPFilter] = useState(undefined)
+  
   const isMd = useMediaQuery(960);
   const { theme } = useTheme();
   const SecondMain = {
@@ -67,7 +69,15 @@ export default function Home() {
           <Spacer />
           <Spacer />
                 <br />
+                <Grid className='d-grid justify-content-center' direction={'row'}>
           <Text b id='latest-products' className='text-center' css={{letterSpacing: isMd ?'3px':'8px'}} h3>LATEST PRODUCTS</Text>
+          {/* <Image
+          src='/svg/filter.svg'
+            width={40}
+            height={40}
+          alt=''
+          /> */}
+          </Grid>
           <Spacer />
           
           <Grid.Container  gap={1} >
@@ -88,8 +98,23 @@ export default function Home() {
           <Spacer />
           <Spacer />
           <Spacer />
-          <Text css={{letterSpacing:isMd ?'4px':'8px'}} id="our-products" className='text-center' h3 b>OUR PRODUCTS</Text>
+          <Grid className='d-grid justify-content-center' direction={'row'}>
+          <Text css={{letterSpacing:isMd ?'4px':'8px'}} id="our-products" h3 b>
+            OUR PRODUCTS
+            
+            
+            </Text>
+            {/* <Image
+          src='/svg/filter-active.svg'
+            width={60}
+            height={60}
+          alt=''
+          /> */}
+            
+          
+          </Grid>
 
+          
           <Grid.Container css={{"display":"flex", "justifyContent":"center", 'gap':"5px"}}>
               <div className='our_products_buttons'>
               <button className='active_btn btn'>All</button>

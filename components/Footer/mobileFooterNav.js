@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react'
 import ButtonLink from '../Buttons/ButtonLink';
+import {Zoom} from 'react-awesome-reveal'
 
 function Mfooter(params) {
   const {state, dispatch} = React.useContext(storeContext);
@@ -97,6 +98,7 @@ function Mfooter(params) {
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"300px", overflowY:"scroll", overflowX:"hidden"}}>
                 {state.cart.content.map((item, index)=>{
                   return(
+                    <Zoom triggerOnce>
                     <Grid.Container key={index} css={{height:"auto", width:'100%', }}>
                   <Grid xs={6}>
                   <Card
@@ -174,6 +176,7 @@ function Mfooter(params) {
                       </Grid>
                   </Grid>
                 </Grid.Container>
+                </Zoom>
                   )
                 })}
                 </Grid.Container>

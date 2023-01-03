@@ -10,6 +10,7 @@ import {useState} from 'react'
 import SelectState from "../Select/SelectState"
 import { MyStyledButton } from "../Buttons/myStyledButton"
 import { useRouter } from 'next/router'
+import {Zoom} from "react-awesome-reveal";
 
 
 
@@ -51,6 +52,7 @@ function Information(){
     }
     
     return(
+        <Zoom triggerOnce cascade>
         <Grid direction="column" className="p-0 m-0"   xs={'6'}>
             <form onSubmit={submitHandler}>
         
@@ -132,6 +134,7 @@ function Information(){
         </form>
           
         </Grid>
+        </Zoom>
     )
 }
 export default Information;

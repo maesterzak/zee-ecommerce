@@ -3,6 +3,7 @@ import Button2 from "../../components/Buttons/Button2"
 
 import Link from "next/link"
 import { useMediaQuery } from "../mediaQuery"
+import { MyStyledButton } from "../Buttons/myStyledButton";
 
 function Payment(){
     
@@ -27,7 +28,7 @@ function Payment(){
 
 
             
-            <Grid xs={4} direction="column">
+            <Grid xs={3} direction="column">
             <Text  >Email</Text>
             <Text  >Phone Number</Text>
             <Text  >Name</Text>
@@ -35,8 +36,8 @@ function Payment(){
             <Text >Total</Text>
 
                 </Grid>
-                <Grid xs={8} direction="column" >
-                <Text >abubakarzakari1703@gmail.com</Text>
+                <Grid xs={9} direction="column" >
+                <Text>abubakarzakari1703@gmail.com</Text>
                 <Text >+2348062257480</Text>
                 <Text >Abubakar Zakari</Text>
                 <Text>Housing estate Abuja</Text>
@@ -66,8 +67,34 @@ function Payment(){
         <Spacer />
         
         <Text css={{fontSize:"x-large"}} h1>Payment</Text>
-        <Text css={{fontSize:"large"}} h2>Select Payment Method</Text>
-        <Grid.Container>
+        <Text css={{fontSize:"large"}} h2>Select A Payment Method</Text>
+        <Spacer />
+        <Grid.Container direction={'column'} css={{gap:'10px'}}>
+        <MyStyledButton
+        css={{
+            fontSize:'large',
+            background:'#b59677'
+        }}
+        >
+            Paystack
+        </MyStyledButton>
+        <MyStyledButton
+        css={{
+            fontSize:'large',
+            background:'#b59677'
+        }}
+        >
+            Flutterwave
+        </MyStyledButton>
+        <MyStyledButton
+        css={{
+            fontSize:'large',
+            background:'#b59677'
+        }}
+        >
+            PayPal
+        </MyStyledButton>
+        <Spacer/>
 
         </Grid.Container>
           

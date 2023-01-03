@@ -4,6 +4,7 @@ import { storeContext } from "../../components/context/Store";
 import React from 'react';
 import { useMediaQuery } from '../mediaQuery/index';
 import SubTotalCalculator from "../cartController/subTotalCalculator"
+import {Zoom} from "react-awesome-reveal";
 
 
 function CheckoutCart(){
@@ -17,6 +18,7 @@ function CheckoutCart(){
         
         {state.cart.content.map((item, index)=>{
             return(
+                <Zoom triggerOnce cascade>
                 <Grid.Container key={index} css={{padding:isMd ? '0':'20px'}} >
             <Grid xs={'8'}>
         <div style={{width:"100px", height:"100px", position:'relative', overflow:'unset'}}>
@@ -56,9 +58,10 @@ function CheckoutCart(){
                         </Grid>
 
                         </Grid.Container>
-
+                        </Zoom>
 
             )
+
         })}
         <Spacer />
         <hr />

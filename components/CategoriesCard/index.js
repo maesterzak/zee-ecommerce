@@ -1,6 +1,6 @@
 import {Card, Grid, Col, Text, Image} from '@nextui-org/react'
 import Link from 'next/link';
-import { Zoom } from 'react-reveal';
+import {Zoom} from "react-awesome-reveal";
 
 function CategoryCard(params) {
     const {mq, item} = params
@@ -10,7 +10,7 @@ function CategoryCard(params) {
         <Grid  xs={mq ? 12:3}>
         
             <Link href={`/category/${item.name.toLocaleLowerCase()}`}>
-            <Zoom left cascade>
+            <Zoom left triggerOnce cascade>
                 <Card css={{height:'250px'}} variant="flat" isPressable
                 isHoverable >
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>

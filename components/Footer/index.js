@@ -1,18 +1,17 @@
 import { Grid, Spacer, Text, Collapse, useTheme, Input } from "@nextui-org/react";
 import { useMediaQuery } from "../mediaQuery";
 import React from 'react'
-import { faCartShopping, faHeart, faStore } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import Link from "next/link";
 import Image from "next/image";
 import Button1 from "../Buttons/Button1";
+import { Categoryitems } from "../../utils/data";
+import CapitalizeFirstCharacter from "../textComponent/capitalizeFirstCharacter";
 
 function Footer(params) {
     const { theme, isDark } = useTheme();
     const isMd = useMediaQuery(960);
-    const Category =[
-        "Accessory", "Footware", "Handbag", "Shoes"
-    ]
+    
     const Information =[
         {title:'About us', link:'/'},
         {title:'Contact us', link:'/'},
@@ -90,10 +89,11 @@ function Footer(params) {
                     </Text> */}
                     <Spacer />
                     <Text  color="white" >
-                        {Category.map((item, index)=>{
+                        {Categoryitems.map((item, index)=>{
                         return(
                             <React.Fragment key={index}>
-                                {item}
+                                
+                                <Link href={`/category/${item.name}`}>{item.name}</Link>
                                 <Spacer />
                             </React.Fragment>
                         )}
@@ -222,10 +222,10 @@ function Footer(params) {
                     </Text>
                     <Spacer />
                     <Text  color="white" >
-                        {Category.map((item, index)=>{
+                        {Categoryitems.map((item, index)=>{
                         return(
                             <React.Fragment key={index}>
-                                {item}
+                                <Link href={`/category/${item.name}`}>{CapitalizeFirstCharacter(item.name)}</Link>
                                 <Spacer />
                             </React.Fragment>
                         )}

@@ -16,6 +16,7 @@ import { useRouter } from 'next/router'
 import { storeContext } from "../../components/context/Store";
 import React from 'react'
 import SubTotalCalculator from '../cartController/subTotalCalculator.js';
+import {Zoom} from "react-awesome-reveal";
 
 function NavbarWrapper(params) {
   const router = useRouter()
@@ -154,8 +155,11 @@ function NavbarWrapper(params) {
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"300px", overflowY:"scroll", overflowX:"hidden"}}>
                 {state.cart.content.map((item, index)=>{
                   return(
+                    <Zoom triggerOnce>
                     <Grid.Container key={index} css={{height:"auto", width:'100%', }}>
+                  
                   <Grid xs={6}>
+                  
                   <Card
                                 isHoverable
                                 isPressable
@@ -230,7 +234,9 @@ function NavbarWrapper(params) {
                         
                       </Grid>
                   </Grid>
+                  
                 </Grid.Container>
+                </Zoom>
                   )
                 })}
                 </Grid.Container>
