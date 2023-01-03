@@ -175,7 +175,9 @@ export default function Home() {
 
               )
             })}
+            <span id='about'></span>
             <Grid xs={12} css={{ display:'flex', justifyContent:'center', alignItems: 'center'}} >
+            
             <Card.Image css={{maxHeight:"70vh", display:'flex', justifyContent:'center', alignItems: 'center', minHeight:"50vh"}}
                   src={"https://cdn.shopify.com/s/files/1/0437/1913/1293/files/store-baner-if_2450x.jpg?v=1613697029"}
                   width="100%"
@@ -186,6 +188,7 @@ export default function Home() {
                   </Card.Image>
 
                   <Card className='p-4' css={{ position: "absolute", width: isMd ? "80%":"70%",height:"300px" , background:"rgba(181, 150, 119, 0.8)", textAlign:'center'}}>
+                  
                 <Col css={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <Text css={{fontSize:'x-large', letterSpacing:'15px', padding:0}} weight="bold" color='#ffffff' transform="uppercase">
                     3PLEZEE 
@@ -206,6 +209,7 @@ export default function Home() {
                 </Col>
                 </Card>
 
+            <span id='contact'></span>
 
             </Grid>
 

@@ -80,12 +80,12 @@ function NavbarWrapper(params) {
               
             {/* </Navbar.Link> */}
             {/* <Navbar.Link > */}
-            <Link href={router.asPath ==='/' ? "#categories": "/#categories"} className='d-flex align-items-center'>
+            <Link href={router.asPath ==='/' ? "#about": "/#about"} className='d-flex align-items-center'>
               ABOUT US
               </Link>
               {/* </Navbar.Link> */}
             {/* <Navbar.Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"} > */}
-              <Link href={router.asPath ==='/' ? "#latest-products": "/#latest-products"}>
+              <Link href={router.asPath ==='/' ? "#contact": "/#contact"}>
               CONTACT US
               </Link>
               {/* </Navbar.Link> */}
