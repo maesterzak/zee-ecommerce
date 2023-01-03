@@ -261,7 +261,7 @@ function NavbarWrapper(params) {
               <Link className={`${styles.link}`} href='/wishlist'>
           {/* <FontAwesomeIcon size={'2x'} icon={faHeartCirclePlus} /> */}
           <Image
-                        src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
+                        src={isDark ?  '/svg/heart-light-nav.svg': '/svg/heart-dark.svg'}
                         width='50'
                         alt=''
                         height={'50'}

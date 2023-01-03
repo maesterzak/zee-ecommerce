@@ -1,4 +1,4 @@
-import { Card, Container, Grid, Spacer, Text } from "@nextui-org/react";
+import { Card, Container, Grid, Spacer, Text, Textarea } from "@nextui-org/react";
 import { useMediaQuery } from "../../components/mediaQuery";
 import { useRouter } from 'next/router'
 import styles from './styles.module.css'
@@ -11,8 +11,9 @@ import {useTheme } from '@nextui-org/react'
 import { MyStyledButton } from "../../components/Buttons/myStyledButton";
 import { storeContext } from "../../components/context/Store";
 import { find} from "lodash";
-
+import ReactStars from "react-rating-stars-component";
 import {Slide} from "react-awesome-reveal";
+import Button2 from "../../components/Buttons/Button2";
 
 
 function ProductDetails() {
@@ -54,6 +55,14 @@ function ProductDetails() {
     const ImageHandler = (imageIndex) => {
       setMainImageIndex(imageIndex)
     };
+
+    const addReview =(e)=>{
+      e.preventDefault();
+      var formData = new FormData(e.target);
+
+      const form_values = Object.fromEntries(formData);
+      
+  }
     
     return(
         <>
@@ -130,7 +139,13 @@ function ProductDetails() {
 
                     <Spacer />
 
-                    <Text b>Reviews</Text>
+                    
+                    <ReactStars
+    count={5}
+    // onChange={ratingChanged}
+    size={30}
+    activeColor="#b59677"
+  />,
                     <Text p>{product?.description}</Text>
 
                     
@@ -256,6 +271,85 @@ function ProductDetails() {
 
             </form>
             <Spacer />
+            <Spacer />
+            <Grid className="w-100">
+                <Text h3 className='text-center ' b>REVIEWS</Text>
+                     <Spacer />
+                <Grid.Container css={{display: 'flex', justifyContent:'center'}}  gap={2} >
+            <Grid xs={isMd ? 12:3} css={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+              <Text className="m-0 p-0 text-center" css={{fontSize:'x-large'}}>4.5</Text>
+              <div className="d-flex justify-content-center">
+              <ReactStars
+              count={5}
+              
+              // onChange={ratingChanged}
+              size={40}
+              isHalf
+              activeColor="#b59677"
+            />
+            </div>
+            <Text className="m-0 p-0 text-center">4 reviews</Text>
+            <div className="d-flex justify-content-center">
+            
+            </div>
+            </Grid>
+
+            <Grid xs={isMd ? 12:3}>
+              <form onSubmit={addReview}>
+              <Textarea name='review' placeholder='How awesome is our product ?' css={{width:isMd ?  '270px':'350px',}}>
+
+              </Textarea>
+              <ReactStars
+              count={5}
+              
+              // onChange={ratingChanged}
+              size={30}
+              isHalf
+              activeColor="#b59677"
+            />
+
+            <MyStyledButton 
+                        
+              type={'submit'}
+              // disabled= {params.disabled ?? false}
+              auto 
+              css={{height:"40px", width: "40%", fontSize: "large"}}
+              size="mysize"
+              color="mycolor">
+                Add Review
+            </MyStyledButton>
+            </form>
+
+            </Grid>
+
+            </Grid.Container>
+                     <Spacer />
+            <Grid.Container>
+              <Grid css={{width:'30px', height:'30px', borderRadius:'50%', background:'#b59677', display:'flex', justifyContent:'center', alignItems:'center', color:'White'}}>
+                A
+              </Grid>
+              <Grid css={{paddingLeft:'10px'}}>
+                <Text>Abubakar zakari</Text>
+
+                
+              </Grid>
+            </Grid.Container>
+            <Grid.Container direction="column">
+            <ReactStars
+              count={5}
+              
+              // onChange={ratingChanged}
+              size={25}
+              isHalf
+              activeColor="#b59677"
+            />
+              <Text>This product is awesome</Text>
+            </Grid.Container>
+
+                
+
+            </Grid>
+            <Spacer />
             <Grid className="w-100">
                 <Text h3 className='text-center ' b>YOU MAY ALSO LIKE</Text>
                      <Spacer />
@@ -273,6 +367,8 @@ function ProductDetails() {
                 
 
             </Grid>
+
+            
 
             <Spacer />
             <Grid className="w-100">

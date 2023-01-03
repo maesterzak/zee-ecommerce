@@ -69,7 +69,7 @@ function Mfooter(params) {
               </div>
               
                 <Text><Link  className={`${styles.link}`} href='/wishlist'><Image
-                        src={isDark ?  '/svg/heart-light.svg': '/svg/heart-dark.svg'}
+                        src={isDark ?  '/svg/heart-light-nav.svg': '/svg/heart-dark.svg'}
                         width='50'
                         height={'50'}
                         style={{margin:"0"}}

@@ -7,7 +7,8 @@ const Button2=(params) => {
         size: {
           mysize: {
             height: '$12', // space[12]
-            borderRadius: '$xs' // radii.xs
+            borderRadius: '$xs', // radii.xs
+            fontSize:'large'
           }
         },
         color: {
