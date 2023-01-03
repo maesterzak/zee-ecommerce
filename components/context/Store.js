@@ -45,6 +45,13 @@ function reducer(state, action) {
         return { ...state, cart: cartContent };
       
     }
+    case "RESET_CART": {
+      // let cartContent = CartController('delete', payload);
+      let cartContent = { content: [], amount: 0 }
+      localStorage.setItem('cart', JSON.stringify(cartContent))
+      return { ...state, cart: cartContent };
+    
+  }
     case "SET_WISHLIST": {
       // let cartContent = CartController('delete', payload);
       let wishlist = JSON.parse(localStorage?.getItem("wishlist")) ?? { content: [], amount: 0 }
