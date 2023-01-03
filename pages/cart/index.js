@@ -77,8 +77,8 @@ function Cart(){
             {state.cart.content.map((item, index)=>{
                 return(
 
-               <Zoom triggerOnce>
-            <Grid.Container key={index} css={{marginBottom: "20px"}} direction="row">
+               <Zoom key={index} triggerOnce>
+            <Grid.Container  css={{marginBottom: "20px"}} direction="row">
                 <Grid css={{width:"45%"}} >
                     
                     <Grid className="d-flex" >

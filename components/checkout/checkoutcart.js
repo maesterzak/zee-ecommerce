@@ -18,7 +18,7 @@ function CheckoutCart(){
         
         {state.cart.content.map((item, index)=>{
             return(
-                <Zoom triggerOnce cascade>
+                <Zoom key={index} triggerOnce cascade>
                 <Grid.Container key={index} css={{padding:isMd ? '0':'20px'}} >
             <Grid xs={'8'}>
         <div style={{width:"100px", height:"100px", position:'relative', overflow:'unset'}}>

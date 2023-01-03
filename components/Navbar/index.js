@@ -155,7 +155,7 @@ function NavbarWrapper(params) {
                 <Grid.Container className='gap-3 scrollbar' css={{maxHeight:"300px", overflowY:"scroll", overflowX:"hidden"}}>
                 {state.cart.content.map((item, index)=>{
                   return(
-                    <Zoom triggerOnce>
+                    <Zoom key={index} triggerOnce>
                     <Grid.Container key={index} css={{height:"auto", width:'100%', }}>
                   
                   <Grid xs={6}>
